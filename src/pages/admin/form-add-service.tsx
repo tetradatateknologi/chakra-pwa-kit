@@ -84,6 +84,7 @@ export default function FormAddService() {
             </FormControl>
           </Stack>
           <FormControl
+            isRequired
             mb={5}
             display={
               (method == 'post') ? 'block' : 'none'
