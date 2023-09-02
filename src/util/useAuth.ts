@@ -9,6 +9,14 @@ const resetAuth = () => {
   localStorage.clear();
 };
 
+const getUserLoginData = () => {
+  if (isLogin()) {
+    const user = JSON.parse(localStorage.getItem("user"));
+    return user?.payload;
+  }
+  return undefined;
+};
+
 const isLogin = () => {
   if (localStorage.getItem("isLogin") != "1") {
     return false;
@@ -20,4 +28,5 @@ export const useAuth = {
   setAuth,
   resetAuth,
   isLogin,
+  getUserLoginData,
 };

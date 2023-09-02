@@ -55,7 +55,8 @@ interface SidebarProps extends BoxProps {
   onClose: () => void
 }
 
-const LinkItems: Array<LinkItemProps> = useMenuStore.getAdminMenu()
+const user = useAuth.getUserLoginData()
+const LinkItems: Array<LinkItemProps> = useMenuStore.getMenuByRole()
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   return (
@@ -222,9 +223,11 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                   alignItems="flex-start"
                   spacing="1px"
                   ml="2">
-                  <Text fontSize="sm">Hanif Radityo</Text>
+                  <Text fontSize="sm">
+                    {user.login_name}
+                  </Text>
                   <Text fontSize="xs" color="gray.600">
-                    Admin
+                    {user.login_role}
                   </Text>
                 </VStack>
                 <Box display={{ base: 'none', md: 'flex' }}>
@@ -258,9 +261,9 @@ interface AdminLayoutProps {
 
 const AdminLayout = (props: AdminLayoutProps) => {
   new AuthMiddleware()
-
   const { children } = props
   const { isOpen, onOpen, onClose } = useDisclosure()
+
   return (
     <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
       <SidebarContent onClose={() => onClose} display={{ base: 'none', md: 'block' }} />
