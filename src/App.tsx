@@ -13,6 +13,7 @@ import React from 'react';
 import FormSample from './pages/admin/form-sample.tsx';
 import ChartSample from './pages/admin/chart-sample.tsx';
 import Documentation from './pages/admin/documentation.tsx';
+import FormAddService from './pages/admin/form-add-service.tsx';
 
 export const Context = React.createContext([])
 
@@ -28,6 +29,8 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path='/admin' element={<HomeDefaultAdmin />} />
+          <Route path='/admin/service/new' element={<FormAddService />} />
+
           <Route path='/admin/trending' element={<Trending />} />
           <Route path='/admin/explore' element={<Explore />} />
           <Route path='/admin/form' element={<FormSample />} />

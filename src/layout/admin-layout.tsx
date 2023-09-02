@@ -48,17 +48,16 @@ interface SubMenuProps {
 }
 
 interface MobileProps extends FlexProps {
-  onOpen: () => void
+  onOpen: () => void,
+  user: any
 }
 
 interface SidebarProps extends BoxProps {
-  onClose: () => void
+  onClose: () => void,
+  linkItems: LinkItemProps
 }
 
-const user = useAuth.getUserLoginData()
-const LinkItems: Array<LinkItemProps> = useMenuStore.getMenuByRole()
-
-const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+const SidebarContent = ({ onClose, linkItems, ...rest }: SidebarProps) => {
   return (
     <Box
       transition="3s ease"
@@ -74,7 +73,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
       <div style={{ overflow: 'auto', height: '100vh' }}>
-        {LinkItems.map((link) => {
+        {linkItems.map((link) => {
           if (link?.type == "dropdown") {
             return (
               <Accordion
@@ -178,7 +177,7 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
   )
 }
 
-const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
+const MobileNav = ({ onOpen, user, ...rest }: MobileProps) => {
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -261,12 +260,15 @@ interface AdminLayoutProps {
 
 const AdminLayout = (props: AdminLayoutProps) => {
   new AuthMiddleware()
+
   const { children } = props
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const User = useAuth.getUserLoginData()
+  const LinkItems: Array<LinkItemProps> = useMenuStore.getMenuByRole()
 
   return (
     <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
-      <SidebarContent onClose={() => onClose} display={{ base: 'none', md: 'block' }} />
+      <SidebarContent onClose={() => onClose} linkItems={LinkItems} display={{ base: 'none', md: 'block' }} />
       <Drawer
         isOpen={isOpen}
         placement="left"
@@ -279,7 +281,7 @@ const AdminLayout = (props: AdminLayoutProps) => {
         </DrawerContent>
       </Drawer>
       {/* mobilenav */}
-      <MobileNav onOpen={onOpen} />
+      <MobileNav onOpen={onOpen} user={User} />
       <Box ml={{ base: 0, md: 60 }} p="4">
         {/* content */}
         <Container maxW={'7xl'} p="12">
