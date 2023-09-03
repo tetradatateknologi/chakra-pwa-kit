@@ -5,6 +5,8 @@ import {
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom'
 import { FiPlus } from 'react-icons/fi';
+import { useEffect, useState } from 'react';
+import { serviceStore } from '../../stores/serviceStore';
 
 const ServiceCard = () => {
   return (
@@ -35,6 +37,16 @@ const ServiceCard = () => {
 }
 
 export default function Service() {
+  const [services, setServices] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await serviceStore.getServices()
+      setServices(data)
+    }
+
+    fetchData()
+  }, [])
 
   return (
     <AdminLayout>
@@ -53,11 +65,13 @@ export default function Service() {
         </Link>
       </Flex>
       <SimpleGrid justifyItems={'center'} columns={{ base: 1, md: 3 }} spacing={3}>
-        <ServiceCard />
-        <ServiceCard />
-        <ServiceCard />
-        <ServiceCard />
-        <ServiceCard />
+        {
+          services.map(() => {
+            return (
+              <ServiceCard />
+            )
+          })
+        }
       </SimpleGrid>
     </AdminLayout>
   )

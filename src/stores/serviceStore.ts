@@ -4,6 +4,14 @@ import { useLoading } from "../util/useLoading";
 import { useAuth } from "../util/useAuth";
 import { useAlert } from "../util/useAlert";
 
+const getServices = async () => {
+  useLoading.show();
+  const data = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const json = await data.json();
+  useLoading.hide();
+  return json;
+};
+
 const createNewService = (params: any) => {
   useLoading.show();
 
@@ -49,4 +57,5 @@ const createNewService = (params: any) => {
 
 export const serviceStore = {
   createNewService,
+  getServices,
 };
