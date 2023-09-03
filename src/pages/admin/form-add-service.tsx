@@ -2,17 +2,28 @@ import { useState } from "react"
 import AdminLayout from "../../layout/admin-layout"
 import {
   Box, FormControl, FormLabel, Heading, Stack, Textarea, Text,
-  Input, useColorModeValue, Switch, FormHelperText, Select, Button, Flex, Icon
-} from "@chakra-ui/react"
-
-import {
+  Input, useColorModeValue, Switch,
+  FormHelperText, Select, Button, Flex, Icon,
   Table, Thead,
   Tbody, Tr,
   Th, Td, TableContainer,
-} from '@chakra-ui/react'
+} from "@chakra-ui/react"
 
 import { toast } from 'react-toastify'
 import { FiTrash } from "react-icons/fi";
+import { useAuth } from "../../util/useAuth"
+import LinkDefault from "../../components/link-default"
+
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { serviceStore } from "../../stores/serviceStore";
+
+interface Parameter {
+  id: string,
+  name: string,
+  value: string,
+  description: string,
+}
 
 export default function FormAddService() {
   const [parameters, setParameters] = useState([])
@@ -20,16 +31,22 @@ export default function FormAddService() {
   const [parameterValue, setParameterValue] = useState('')
   const [parameterDescription, setParameterDescription] = useState('')
   const [method, setMethod] = useState('get')
+  const [description, setDescription] = useState('')
+  const [bodyType, setBodyType] = useState('form-data')
+  const [online, setOnline] = useState(false)
+  const [endpoint, setEndpoint] = useState('')
+  const [name, setName] = useState('')
 
   const handleAddParameter = () => {
     // validation
-    if (!parameterName && !parameterValue) {
+    if (!parameterName || !parameterValue) {
       toast.error("Nama Parameter dan Contoh Nilai wajib diisi")
       return false
     }
 
     // add parameter
-    const newParameter = {
+    const newParameter: Parameter = {
+      id: useAuth.getRandomId(),
       name: parameterName,
       value: parameterValue,
       description: parameterDescription,
@@ -40,6 +57,23 @@ export default function FormAddService() {
     setParameterName('')
     setParameterValue('')
     setParameterDescription('')
+  }
+
+  const handleDeleteParameter = (id) => {
+    setParameters(parameters.filter((item) => item.id !== id))
+    toast.success("Berhasil menghapus data")
+  }
+
+  const handleSubmit = () => {
+    serviceStore.createNewService({
+      name: name,
+      endpoint: endpoint,
+      parameter: parameters,
+      method: method,
+      description: description,
+      body_type: bodyType,
+      online: online
+    })
   }
 
   return (
@@ -58,16 +92,16 @@ export default function FormAddService() {
             <FormLabel>
               Nama Layanan API
             </FormLabel>
-            <Input type="text" />
+            <Input type="text" value={name} onChange={(e) => setName(e.target.value)} />
           </FormControl>
           <Stack mb={5} direction={'row'}>
             <FormControl isRequired>
               <FormLabel>
-                URL API
+                Endpoint API
               </FormLabel>
-              <Input type="text" />
+              <Input type="text" value={endpoint} onChange={(e) => setEndpoint(e.target.value)} />
               <FormHelperText>
-                Please fill with active number
+                Contoh <LinkDefault href="https://jsonplaceholder.typicode.com/posts" text="https://jsonplaceholder.typicode.com/posts" />
               </FormHelperText>
             </FormControl>
             <FormControl isRequired>
@@ -79,7 +113,7 @@ export default function FormAddService() {
                 <option value='post'>POST</option>
               </Select>
               <FormHelperText>
-                Please fill with active number
+                Info lebih detail <LinkDefault href="https://restfulapi.net/http-methods/" />
               </FormHelperText>
             </FormControl>
           </Stack>
@@ -93,28 +127,43 @@ export default function FormAddService() {
             <FormLabel>
               Metode Pengiriman API
             </FormLabel>
-            <Select>
+            <Select value={bodyType} onChange={(e) => setBodyType(e.target.value)}>
               <option value='form-data'>form-data</option>
               <option value='x-www-form-urlencoded'>x-www-form-urlencoded</option>
               <option value='raw json'>raw json</option>
             </Select>
+            <FormHelperText>
+              Info lebih detail <LinkDefault href="https://www.baeldung.com/postman-form-data-raw-x-www-form-urlencoded" />
+            </FormHelperText>
           </FormControl>
           <FormControl display='flex' alignItems={'center'}>
             <FormLabel htmlFor='email-alerts' mb='0'>
               Publikasikan API
             </FormLabel>
-            <Switch id='email-alerts' />
+            <Switch id='email-alerts' onChange={() => {
+              setOnline(!online)
+            }} />
           </FormControl>
           <FormControl mb={5}>
             <FormHelperText>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sapiente deleniti incidunt nesciunt repellendus consequuntur voluptatum nihil perferendis aliquid error. Soluta rerum quibusdam sapiente autem architecto repellendus ad non ab?
+              Publikasikan API agar dapat diakses oleh user
             </FormHelperText>
           </FormControl>
           <FormControl mb={5}>
             <FormLabel>
               Deskripsi
             </FormLabel>
-            <Textarea height={100} />
+            <CKEditor
+              editor={ClassicEditor}
+              data={description}
+              onReady={editor => {
+                console.log('Editor is ready to use!', editor);
+              }}
+              onBlur={(event, editor) => {
+                const data = editor.getData();
+                setDescription(data);
+              }}
+            />
           </FormControl>
           <FormControl mb={5}>
             <FormLabel>
@@ -149,9 +198,9 @@ export default function FormAddService() {
                     <Td></Td>
                   </Tr>
                   {
-                    parameters.map((parameter) => {
+                    parameters.map((parameter: Parameter) => {
                       return (
-                        <Tr>
+                        <Tr key={parameter.id}>
                           <Td>
                             <Text>
                               {parameter.name}
@@ -168,7 +217,7 @@ export default function FormAddService() {
                             </Text>
                           </Td>
                           <Td>
-                            <Button colorScheme="red">
+                            <Button colorScheme="red" onClick={() => handleDeleteParameter(parameter.id)}>
                               <Icon
                                 as={FiTrash}
                               />
@@ -182,7 +231,7 @@ export default function FormAddService() {
               </Table>
             </TableContainer>
           </FormControl>
-          <Button mb={5} colorScheme="green">
+          <Button mb={5} colorScheme="green" onClick={handleSubmit}>
             Submit
           </Button>
         </Stack>

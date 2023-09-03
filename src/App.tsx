@@ -14,10 +14,12 @@ import FormSample from './pages/admin/form-sample.tsx';
 import ChartSample from './pages/admin/chart-sample.tsx';
 import Documentation from './pages/admin/documentation.tsx';
 import FormAddService from './pages/admin/form-add-service.tsx';
+import { useAlert } from './util/useAlert.ts';
 
 export const Context = React.createContext([])
 
 function App() {
+  useAlert.init()
   return (
     <>
       <ToastContainer />

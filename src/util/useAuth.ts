@@ -1,3 +1,9 @@
+import { v4 as uuidv4 } from "uuid";
+
+const getRandomId = () => {
+  return uuidv4();
+};
+
 const setAuth = (data?: any | null) => {
   if (data) {
     localStorage.setItem("user", JSON.stringify(data));
@@ -17,6 +23,16 @@ const getUserLoginData = () => {
   return undefined;
 };
 
+const getJWT = () => {
+  if (isLogin()) {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const jwt = user.jwt;
+    console.log(jwt);
+    return "Bearer " + jwt;
+  }
+  return undefined;
+};
+
 const isLogin = () => {
   if (localStorage.getItem("isLogin") != "1") {
     return false;
@@ -29,4 +45,6 @@ export const useAuth = {
   resetAuth,
   isLogin,
   getUserLoginData,
+  getRandomId,
+  getJWT,
 };
