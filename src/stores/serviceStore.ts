@@ -6,10 +6,25 @@ import { useAlert } from "../util/useAlert";
 
 const getServices = async () => {
   useLoading.show();
-  const data = await fetch("https://jsonplaceholder.typicode.com/posts");
+
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", useAuth.getJWT());
+
+  const formdata = new FormData();
+  formdata.append("show_all", 1);
+
+  const requestOptions: any = {
+    method: "POST",
+    headers: myHeaders,
+    body: formdata,
+    redirect: "follow",
+  };
+
+  const data = await fetch(useEnv.backendUrl("service"), requestOptions);
   const json = await data.json();
   useLoading.hide();
-  return json;
+
+  return json.data;
 };
 
 const createNewService = (params: any) => {

@@ -8,19 +8,20 @@ import { FiPlus } from 'react-icons/fi';
 import { useEffect, useState } from 'react';
 import { serviceStore } from '../../stores/serviceStore';
 
-const ServiceCard = () => {
+const ServiceCard = (props: any) => {
+  const { data } = props
   return (
-    <Card maxW='sm'>
+    <Card w={'100%'}>
       <CardBody>
         <Stack mt='6' spacing='3'>
           <Heading size='md'>
-            Nama Layanan API
+            {data.service_name}
           </Heading>
           <Text>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam asperiores ab delectus vel voluptas esse ducimus.
+            {data.service_description}
           </Text>
           <Text textAlign={'end'} fontFamily={'mono'}>
-            Kode API
+            {data.service_keychar}
           </Text>
         </Stack>
       </CardBody>
@@ -66,9 +67,11 @@ export default function Service() {
       </Flex>
       <SimpleGrid justifyItems={'center'} columns={{ base: 1, md: 3 }} spacing={3}>
         {
-          services.map(() => {
+          services.map((service) => {
             return (
-              <ServiceCard />
+              <ServiceCard
+                data={service}
+              />
             )
           })
         }

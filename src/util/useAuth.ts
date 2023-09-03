@@ -16,21 +16,15 @@ const resetAuth = () => {
 };
 
 const getUserLoginData = () => {
-  if (isLogin()) {
-    const user = JSON.parse(localStorage.getItem("user"));
-    return user?.payload;
-  }
-  return undefined;
+  const user = JSON.parse(localStorage.getItem("user"));
+  return user?.payload;
 };
 
 const getJWT = () => {
-  if (isLogin()) {
-    const user = JSON.parse(localStorage.getItem("user"));
-    const jwt = user.jwt;
-    console.log(jwt);
-    return "Bearer " + jwt;
-  }
-  return undefined;
+  const user = JSON.parse(localStorage.getItem("user"));
+  const jwt = user.jwt;
+  console.log(jwt);
+  return "Bearer " + jwt;
 };
 
 const isLogin = () => {
