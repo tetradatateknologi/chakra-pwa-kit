@@ -8,14 +8,10 @@ import {
   Tbody, Tr,
   Th, Td, TableContainer,
 } from "@chakra-ui/react"
-
 import { toast } from 'react-toastify'
 import { FiTrash, FiPlus } from "react-icons/fi";
 import { useAuth } from "../../util/useAuth"
 import LinkDefault from "../../components/link-default"
-
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { serviceStore } from "../../stores/serviceStore";
 
 interface Parameter {
@@ -153,17 +149,8 @@ export default function FormAddService() {
             <FormLabel>
               Deskripsi
             </FormLabel>
-            <CKEditor
-              editor={ClassicEditor}
-              data={description}
-              onReady={editor => {
-                console.log('Editor is ready to use!', editor);
-              }}
-              onBlur={(event, editor) => {
-                const data = editor.getData();
-                setDescription(data);
-              }}
-            />
+            <Textarea onBlur={((e) => setDescription(e.target.value))}>
+            </Textarea>
           </FormControl>
           <FormControl mb={5}>
             <FormLabel>

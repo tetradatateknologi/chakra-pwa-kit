@@ -53,8 +53,9 @@ const createNewService = (params: any) => {
     .then((response) => response.json())
     .then((response) => {
       if (response.status_code == 200) {
-        useAlert.setSuccessMessage("Berhasil menambahkan data");
-        window.location.href = "/admin";
+        toast.success("Berhasil menambahkan data");
+        window.history.back();
+        return true;
       }
       if (response.status_code == 400) {
         toast.error(response.message);
