@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react"
 
 import { toast } from 'react-toastify'
-import { FiTrash } from "react-icons/fi";
+import { FiTrash, FiPlus } from "react-icons/fi";
 import { useAuth } from "../../util/useAuth"
 import LinkDefault from "../../components/link-default"
 
@@ -78,7 +78,7 @@ export default function FormAddService() {
 
   return (
     <AdminLayout>
-      <Heading mb={5}>
+      <Heading size={'lg'} mb={5}>
         Informasi Detail Layanan API
       </Heading>
       <Box
@@ -170,7 +170,11 @@ export default function FormAddService() {
               Detail Parameter
             </FormLabel>
             <Flex alignItems={'center'} justifyContent={'end'}>
-              <Button size={'sm'} colorScheme="green" onClick={handleAddParameter}>
+              <Button variant={'ghost'} size={'sm'} colorScheme="green" onClick={handleAddParameter}>
+                <Icon
+                  mr={1}
+                  as={FiPlus}
+                />
                 Buat Parameter Baru
               </Button>
             </Flex>
@@ -217,7 +221,7 @@ export default function FormAddService() {
                             </Text>
                           </Td>
                           <Td>
-                            <Button colorScheme="red" onClick={() => handleDeleteParameter(parameter.id)}>
+                            <Button size={'sm'} colorScheme="red" onClick={() => handleDeleteParameter(parameter.id)}>
                               <Icon
                                 as={FiTrash}
                               />

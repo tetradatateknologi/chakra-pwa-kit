@@ -15,6 +15,7 @@ import ChartSample from './pages/admin/chart-sample.tsx';
 import Documentation from './pages/admin/documentation.tsx';
 import FormAddService from './pages/admin/form-add-service.tsx';
 import { useAlert } from './util/useAlert.ts';
+import Service from './pages/admin/service.tsx';
 
 export const Context = React.createContext([])
 
@@ -26,13 +27,18 @@ function App() {
       <Loading />
       <Router>
         <Routes>
+          {/* Public Pages */}
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
+
+          {/* Admin Pages */}
           <Route path='/admin' element={<HomeDefaultAdmin />} />
+          <Route path='/admin/service' element={<Service />} />
           <Route path='/admin/service/new' element={<FormAddService />} />
 
+          {/* Sample Pages */}
           <Route path='/admin/trending' element={<Trending />} />
           <Route path='/admin/explore' element={<Explore />} />
           <Route path='/admin/form' element={<FormSample />} />
