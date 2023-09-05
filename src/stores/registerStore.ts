@@ -25,14 +25,15 @@ const register = (params: registerParams) => {
 
   fetch(useEnv.backendUrl("register"), requestOptions)
     .then((response) => {
-      if (response.status == 200) {
-        return response.json();
-      }
+      return response.json();
     })
     .then((data) => {
-      useAuth.setAuth(data);
-      toast.success("registrasi berhasil silahkan login");
-      window.history.back();
+      if (data.status_code == 200) {
+        toast.success("registrasi berhasil silahkan login");
+        window.history.back();
+      } else if (data.status_code == 400) {
+        toast.error(data.message);
+      }
       useLoading.hide();
     })
     .catch((error) => {
