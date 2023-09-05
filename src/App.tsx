@@ -19,6 +19,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/global.css';
+import ServiceUser from './pages/user/service.tsx';
+import Profile from './pages/user/profile.tsx';
 
 export const Context = React.createContext([])
 
@@ -36,10 +38,14 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
 
-          {/* Dashboard Pages */}
+          {/* Admin Pages */}
           <Route path='/dashboard' element={<HomeDefaultAdmin />} />
           <Route path='/admin/service' element={<Service />} />
           <Route path='/admin/service/new' element={<FormAddService />} />
+
+          {/* User Pages */}
+          <Route path='/service' element={<ServiceUser />} />
+          <Route path='/profile' element={<Profile />} />
 
           {/* Sample Pages */}
           <Route path='/sample/trending' element={<Trending />} />

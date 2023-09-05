@@ -1,10 +1,8 @@
 import AdminLayout from '../../layout/admin-layout';
 import {
-  Heading, Flex, Button, Icon, Text, SimpleGrid,
+  Heading, Button, Text, SimpleGrid,
   Card, Stack, CardBody, Divider, CardFooter, ButtonGroup
 } from '@chakra-ui/react';
-import { Link } from 'react-router-dom'
-import { FiPlus } from 'react-icons/fi';
 import { useEffect, useState } from 'react';
 import { serviceStore } from '../../stores/serviceStore';
 
@@ -37,7 +35,7 @@ const ServiceCard = (props: any) => {
   )
 }
 
-export default function Service() {
+export default function ServiceUser() {
   const [services, setServices] = useState([])
 
   useEffect(() => {
@@ -54,17 +52,6 @@ export default function Service() {
       <Heading size={'lg'} mb={5}>
         Daftar Layanan API
       </Heading>
-      <Flex alignItems={'center'} justifyContent={'end'} mb={5}>
-        <Link to={'new'}>
-          <Button size={'sm'} colorScheme="green">
-            <Icon
-              mr={1}
-              as={FiPlus}
-            />
-            Buat Service Baru
-          </Button>
-        </Link>
-      </Flex>
       <SimpleGrid justifyItems={'center'} columns={{ base: 1, md: 3 }} spacing={3}>
         {
           services.map((service) => {

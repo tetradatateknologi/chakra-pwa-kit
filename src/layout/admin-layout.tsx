@@ -235,15 +235,18 @@ const MobileNav = ({ onOpen, user, ...rest }: MobileProps) => {
             <MenuList
               bg={useColorModeValue('white', 'gray.900')}
               borderColor={useColorModeValue('gray.200', 'gray.700')}>
-              <MenuItem>Profile</MenuItem>
-              <MenuItem>Settings</MenuItem>
-              <MenuItem>Billing</MenuItem>
+              <Link to={'/profile'}>
+                <MenuItem>
+                  Profil Saya
+                </MenuItem>
+              </Link>
+              <MenuItem>Pengaturan</MenuItem>
               <MenuDivider />
               <MenuItem onClick={() => {
                 useAuth.resetAuth()
                 window.location.reload()
               }
-              }>Sign out</MenuItem>
+              }>Logout</MenuItem>
             </MenuList>
           </Menu>
         </Flex>
