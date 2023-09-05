@@ -71,7 +71,7 @@ const createNewService = (params: any) => {
     });
 };
 
-export const serviceStore = {
+export const useServiceStore = {
   createNewService,
   getServices,
 };

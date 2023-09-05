@@ -4,7 +4,7 @@ import {
   Card, Stack, CardBody, Divider, CardFooter, ButtonGroup
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import { serviceStore } from '../../stores/serviceStore';
+import { useServiceStore } from '../../stores/serviceStore';
 
 const ServiceCard = (props: any) => {
   const { data } = props
@@ -40,7 +40,7 @@ export default function ServiceUser() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await serviceStore.getServices()
+      const data = await useServiceStore.getServices()
       setServices(data)
     }
 

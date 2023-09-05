@@ -5,9 +5,38 @@ import {
   Button, InputGroup, Alert, AlertIcon
 } from "@chakra-ui/react"
 import { toast } from 'react-toastify'
+import { useEffect, useState } from 'react';
+import { useUserStore } from "../../stores/userStore";
+import { useUtil } from "../../util/useUtil";
+
+interface IUser {
+  login_name: string,
+  login_email: string,
+  login_service_quota: number,
+  login_service_api_key: string,
+  login_created_at: string,
+}
 
 export default function Profile() {
+  const [dataUser, setDataUser] = useState<IUser>({
+    login_name: '-',
+    login_email: '-',
+    login_service_quota: 0,
+    login_service_api_key: '-',
+    login_created_at: '-',
+  })
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await useUserStore.getUserProfile()
+      setDataUser(data)
+    }
+
+    fetchData()
+  }, [])
+
   const handleCopy = () => {
+    useUtil.copyToClipboard()
     toast.success("Berhasil Copy API Key")
   }
 
@@ -25,22 +54,22 @@ export default function Profile() {
             <Flex w={'30%'} justifyContent={'center'}>
               <Avatar
                 size={'2xl'}
-                name={'Hanif Radityo'}
+                name={dataUser.login_name}
               />
             </Flex>
             <Stack w={'100%'}>
-              <FormControl>
+              <FormControl isReadOnly>
                 <FormLabel>
                   Nama Lengkap
                 </FormLabel>
-                <Input type="text" disabled />
+                <Input type="text" value={dataUser.login_name} />
               </FormControl>
 
-              <FormControl>
+              <FormControl isReadOnly>
                 <FormLabel>
                   Email
                 </FormLabel>
-                <Input type="email" disabled />
+                <Input type="email" value={dataUser.login_email} />
               </FormControl>
 
               <Alert my={5} p={2} status='warning'>
@@ -49,7 +78,7 @@ export default function Profile() {
               </Alert>
 
               <Stack direction={'row'}>
-                <FormControl>
+                <FormControl isReadOnly>
                   <FormLabel>
                     API Key
                   </FormLabel>
@@ -57,7 +86,8 @@ export default function Profile() {
                     <Input
                       pr='4.5rem'
                       type='text'
-                      disabled
+                      value={dataUser.login_service_api_key}
+                      id="clipboard"
                     />
                     <InputRightElement width='4.5rem'>
                       <Button h='1.75rem' size='sm' onClick={handleCopy}>
@@ -69,11 +99,11 @@ export default function Profile() {
                     Gunakan API Key ini untuk menggunakan API EMIS. Untuk informasi lebih lanjut mengenai cara menggunakan API EMIS, silakan baca dokumentasi.
                   </FormHelperText>
                 </FormControl>
-                <FormControl>
+                <FormControl isReadOnly>
                   <FormLabel>
                     Kuota Penggunaan API
                   </FormLabel>
-                  <Input type="number" disabled />
+                  <Input type="number" value={dataUser.login_service_quota} />
                 </FormControl>
               </Stack>
             </Stack>

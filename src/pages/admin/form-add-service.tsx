@@ -12,7 +12,7 @@ import { toast } from 'react-toastify'
 import { FiTrash, FiPlus } from "react-icons/fi";
 import { useAuth } from "../../util/useAuth"
 import LinkDefault from "../../components/link-default"
-import { serviceStore } from "../../stores/serviceStore";
+import { useServiceStore } from "../../stores/serviceStore";
 
 interface Parameter {
   id: string,
@@ -61,7 +61,7 @@ export default function FormAddService() {
   }
 
   const handleSubmit = () => {
-    serviceStore.createNewService({
+    useServiceStore.createNewService({
       name: name,
       endpoint: endpoint,
       parameter: parameters,
