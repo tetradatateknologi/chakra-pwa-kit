@@ -68,8 +68,8 @@ const SidebarContent = ({ onClose, linkItems, ...rest }: SidebarProps) => {
       pos="fixed"
       h="full"
       {...rest}>
-      <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Logo />
+      <Flex h="20" alignItems="center" mx="8" justifyContent="center">
+        <Logo width={140} height={45} />
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
       <div style={{ overflow: 'auto', height: '100vh' }}>
@@ -213,9 +213,7 @@ const MobileNav = ({ onOpen, user, ...rest }: MobileProps) => {
               <HStack>
                 <Avatar
                   size={'sm'}
-                  src={
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQINHBtBZ5RQtpGgsdGGOZj_-s21S4jSIaPow&usqp=CAU'
-                  }
+                  name={user.login_name}
                 />
                 <VStack
                   display={{ base: 'none', md: 'flex' }}
