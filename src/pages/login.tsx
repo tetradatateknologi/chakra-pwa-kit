@@ -9,13 +9,14 @@ import {
     Button,
     Heading,
     Text,
+    Link,
     useColorModeValue,
 } from '@chakra-ui/react'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { useAuth } from '../util/useAuth'
 import { useLoginStore } from '../stores/loginStore'
+import { Link as RouterLink } from 'react-router-dom'
 import { useLoading } from '../util/useLoading'
 
 export default function Login() {
@@ -39,9 +40,11 @@ export default function Login() {
             bg={useColorModeValue('gray.50', 'gray.800')}>
             <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
                 <Stack align={'center'}>
-                    <Heading fontSize={'4xl'}>Sign in to your account</Heading>
+                    <Heading fontSize={'4xl'}>
+                        Selamat datang kembali
+                    </Heading>
                     <Text fontSize={'lg'} color={'gray.600'}>
-                        to enjoy all of our cool features ✌️
+                        Silahkan login melalui halaman ini
                     </Text>
                 </Stack>
                 <Box
@@ -51,7 +54,7 @@ export default function Login() {
                     p={8}>
                     <Stack spacing={4}>
                         <FormControl id="email">
-                            <FormLabel>Email address</FormLabel>
+                            <FormLabel>Email</FormLabel>
                             <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                         </FormControl>
                         <FormControl id="password">
@@ -63,10 +66,10 @@ export default function Login() {
                                 direction={{ base: 'column', sm: 'row' }}
                                 align={'start'}
                                 justify={'space-between'}>
-                                <Checkbox>Remember me</Checkbox>
-                                <Link to={'/forgot-password'}>
-                                    <Text color={'green.400'}>Forgot password?</Text>
-                                </Link>
+                                <Checkbox colorScheme='green'>Ingat saya</Checkbox>
+                                <RouterLink to={'/forgot-password'}>
+                                    <Text color={'green.400'}>Lupa password?</Text>
+                                </RouterLink>
                             </Stack>
                             <Button
                                 onClick={handleSubmit}
@@ -75,9 +78,17 @@ export default function Login() {
                                 _hover={{
                                     bg: 'green.500',
                                 }}>
-                                Sign in
+                                Login
                             </Button>
                         </Stack>
+                    </Stack>
+                    <Stack pt={6}>
+                        <Text align={'center'}>
+                            Belum punya akun ? {' '}
+                            <RouterLink to={'/register'}>
+                                <Link color={'green.400'}>Registrasi disini</Link>
+                            </RouterLink>
+                        </Text>
                     </Stack>
                 </Box>
             </Stack>

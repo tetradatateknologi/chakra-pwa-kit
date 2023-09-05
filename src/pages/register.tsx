@@ -42,10 +42,10 @@ export default function Register() {
             <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6} w={'800px'}>
                 <Stack align={'center'}>
                     <Heading fontSize={'4xl'} textAlign={'center'}>
-                        Sign up
+                        Registrasi
                     </Heading>
-                    <Text fontSize={'lg'} color={'gray.600'}>
-                        to enjoy all of our cool features ✌️
+                    <Text fontSize={'lg'} color={'gray.600'} textAlign={'center'}>
+                        Silahkan lakukan registrasi, untuk dapat terintegrasi dan bisa menggunakan dengan layanan API kami
                     </Text>
                 </Stack>
                 <Box
@@ -55,11 +55,11 @@ export default function Register() {
                     p={8}>
                     <Stack spacing={4}>
                         <FormControl id="name" isRequired>
-                            <FormLabel>Name</FormLabel>
+                            <FormLabel>Nama Lengkap</FormLabel>
                             <Input type="text" value={name} onChange={(e) => setName(e.target.value)} />
                         </FormControl>
                         <FormControl id="email" isRequired>
-                            <FormLabel>Email address</FormLabel>
+                            <FormLabel>Email</FormLabel>
                             <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                         </FormControl>
                         <FormControl id="password" isRequired>
@@ -76,7 +76,7 @@ export default function Register() {
                             </InputGroup>
                         </FormControl>
                         <FormControl id="password_confirmation" isRequired>
-                            <FormLabel>Password Confirmation</FormLabel>
+                            <FormLabel>Konfirmasi Password</FormLabel>
                             <InputGroup>
                                 <Input type={showPassword ? 'text' : 'password'} value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} />
                                 <InputRightElement h={'full'}>
@@ -97,14 +97,14 @@ export default function Register() {
                                 _hover={{
                                     bg: 'green.500',
                                 }}>
-                                Sign up
+                                Registrasi
                             </Button>
                         </Stack>
                         <Stack pt={6}>
                             <Text align={'center'}>
-                                Already a user? {' '}
+                                Sudah punya akun ? {' '}
                                 <RouterLink to={'/login'}>
-                                    <Link color={'green.400'}>Login</Link>
+                                    <Link color={'green.400'}>Login disini</Link>
                                 </RouterLink>
                             </Text>
                         </Stack>

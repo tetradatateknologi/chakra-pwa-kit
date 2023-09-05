@@ -28,22 +28,23 @@ function App() {
       <Router>
         <Routes>
           {/* Public Pages */}
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Login />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
 
-          {/* Admin Pages */}
-          <Route path='/admin' element={<HomeDefaultAdmin />} />
+          {/* Dashboard Pages */}
+          <Route path='/dashboard' element={<HomeDefaultAdmin />} />
           <Route path='/admin/service' element={<Service />} />
           <Route path='/admin/service/new' element={<FormAddService />} />
 
           {/* Sample Pages */}
-          <Route path='/admin/trending' element={<Trending />} />
-          <Route path='/admin/explore' element={<Explore />} />
-          <Route path='/admin/form' element={<FormSample />} />
-          <Route path='/admin/chart' element={<ChartSample />} />
-          <Route path='/admin/documentation' element={<Documentation />} />
+          <Route path='/sample/trending' element={<Trending />} />
+          <Route path='/sample/explore' element={<Explore />} />
+          <Route path='/sample/form' element={<FormSample />} />
+          <Route path='/sample/chart' element={<ChartSample />} />
+          <Route path='/sample/documentation' element={<Documentation />} />
+          <Route path='/sample/landing-page' element={<Home />} />
         </Routes>
       </Router>
     </>

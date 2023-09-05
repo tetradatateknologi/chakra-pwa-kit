@@ -19,12 +19,6 @@ const login = (params: loginParams) => {
     redirect: "follow",
   };
 
-  if (useEnv.isNoBackend()) {
-    toast.success("login berhasil");
-    useAuth.setAuth();
-    window.location.href = "/admin";
-  }
-
   fetch(useEnv.backendUrl("login"), requestOptions)
     .then((response) => {
       if (response.status == 200) {
@@ -35,7 +29,7 @@ const login = (params: loginParams) => {
     .then((data) => {
       toast.success("login berhasil");
       useAuth.setAuth(data);
-      window.location.href = "/admin";
+      window.location.href = "/dashboard";
     })
     .catch((error) => {
       toast.error(

@@ -30,9 +30,10 @@ const register = (params: registerParams) => {
       }
     })
     .then((data) => {
-      toast.success("registrasi berhasil silahkan login");
       useAuth.setAuth(data);
-      window.location.href = "/login";
+      toast.success("registrasi berhasil silahkan login");
+      window.history.back();
+      useLoading.hide();
     })
     .catch((error) => {
       toast.error("registrasi gagal");
