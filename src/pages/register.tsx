@@ -44,7 +44,7 @@ export default function Register() {
                 </Stack>
                 <Box
                     rounded={'lg'}
-                    bg={useColorModeValue('white', 'gray.700')}
+                    className='bg-glass'
                     boxShadow={'lg'}
                     p={8}>
                     <Stack spacing={4}>

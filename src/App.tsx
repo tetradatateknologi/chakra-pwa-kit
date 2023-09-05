@@ -18,6 +18,7 @@ import { useAlert } from './util/useAlert.ts';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import 'react-toastify/dist/ReactToastify.css';
+import './styles/global.css';
 
 export const Context = React.createContext([])
 

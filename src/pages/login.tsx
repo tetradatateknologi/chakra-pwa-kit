@@ -44,8 +44,8 @@ export default function Login() {
                     </Text>
                 </Stack>
                 <Box
+                    className='bg-glass'
                     rounded={'lg'}
-                    bg={useColorModeValue('white', 'gray.700')}
                     boxShadow={'lg'}
                     p={8}>
                     <Stack spacing={4}>
