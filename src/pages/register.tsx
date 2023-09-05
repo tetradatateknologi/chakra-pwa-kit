@@ -9,7 +9,6 @@ import {
     Button,
     Heading,
     Text,
-    useColorModeValue,
     Link,
 } from '@chakra-ui/react'
 import { useState } from 'react'
@@ -39,7 +38,7 @@ export default function Register() {
                         Registrasi
                     </Heading>
                     <Text fontSize={'lg'} color={'gray.600'} textAlign={'center'}>
-                        Silahkan lakukan registrasi, untuk dapat terintegrasi dan bisa menggunakan dengan layanan API kami
+                        Silahkan lakukan registrasi, untuk dapat terintegrasi dan bisa menggunakan layanan API kami
                     </Text>
                 </Stack>
                 <Box
