@@ -1,5 +1,4 @@
 import {
-    Flex,
     Box,
     FormControl,
     FormLabel,
@@ -18,6 +17,7 @@ import { useAuth } from '../util/useAuth'
 import { useLoginStore } from '../stores/loginStore'
 import { Link as RouterLink } from 'react-router-dom'
 import { useLoading } from '../util/useLoading'
+import PublicLayout from '../layout/public-layout'
 
 export default function Login() {
     const [email, setEmail] = useState('')
@@ -33,11 +33,7 @@ export default function Login() {
     }
 
     return (
-        <Flex
-            minH={'100vh'}
-            align={'center'}
-            justify={'center'}
-            bg={useColorModeValue('gray.50', 'gray.800')}>
+        <PublicLayout>
             <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
                 <Stack align={'center'}>
                     <Heading fontSize={'4xl'}>
@@ -92,6 +88,6 @@ export default function Login() {
                     </Stack>
                 </Box>
             </Stack>
-        </Flex>
+        </PublicLayout>
     )
 }

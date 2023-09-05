@@ -1,12 +1,9 @@
 import {
-    Flex,
     Box,
     FormControl,
     FormLabel,
-    FormErrorMessage,
     Input,
     InputGroup,
-    HStack,
     InputRightElement,
     Stack,
     Button,
@@ -20,6 +17,7 @@ import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
 import { Link as RouterLink } from 'react-router-dom'
 import { useLoading } from '../util/useLoading'
 import { useRegisterStore } from '../stores/registerStore'
+import PublicLayout from '../layout/public-layout'
 
 export default function Register() {
     const [showPassword, setShowPassword] = useState(false)
@@ -34,11 +32,7 @@ export default function Register() {
     }
 
     return (
-        <Flex
-            minH={'100vh'}
-            align={'center'}
-            justify={'center'}
-            bg={useColorModeValue('gray.50', 'gray.800')}>
+        <PublicLayout>
             <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6} w={'800px'}>
                 <Stack align={'center'}>
                     <Heading fontSize={'4xl'} textAlign={'center'}>
@@ -111,6 +105,6 @@ export default function Register() {
                     </Stack>
                 </Box>
             </Stack>
-        </Flex>
+        </PublicLayout>
     )
 }

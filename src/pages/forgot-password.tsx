@@ -1,21 +1,17 @@
 import {
   Button,
   FormControl,
-  Flex,
   Heading,
   Input,
   Stack,
   Text,
   useColorModeValue,
 } from '@chakra-ui/react'
+import PublicLayout from '../layout/public-layout'
 
 export default function ForgotPassword() {
   return (
-    <Flex
-      minH={'100vh'}
-      align={'center'}
-      justify={'center'}
-      bg={useColorModeValue('gray.50', 'gray.800')}>
+    <PublicLayout>
       <Stack
         spacing={4}
         w={'full'}
@@ -51,6 +47,6 @@ export default function ForgotPassword() {
           </Button>
         </Stack>
       </Stack>
-    </Flex>
+    </PublicLayout>
   )
 }
