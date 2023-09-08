@@ -59,6 +59,7 @@ const createNewService = (params: any) => {
   formdata.append("body_type", params?.body_type);
   formdata.append("online", params?.online);
   formdata.append("parameter", JSON.stringify(params?.parameter));
+  formdata.append("custom_gateway_endpoint", params?.custom_gateway_endpoint);
 
   const requestOptions: any = {
     method: "POST",

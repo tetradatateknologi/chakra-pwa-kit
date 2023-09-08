@@ -7,6 +7,7 @@ import {
   Table, Thead,
   Tbody, Tr,
   Th, Td, TableContainer,
+  InputGroup, InputLeftAddon
 } from "@chakra-ui/react"
 import { toast } from 'react-toastify'
 import { FiTrash, FiPlus } from "react-icons/fi";
@@ -22,6 +23,8 @@ interface Parameter {
 }
 
 export default function ServiceCreate() {
+  const [customEndpoint, setCustomEndpoint] = useState('')
+  const [useCustomEndpoint, setUseCustomEndpoint] = useState(false)
   const [parameters, setParameters] = useState([])
   const [parameterName, setParameterName] = useState('')
   const [parameterValue, setParameterValue] = useState('')
@@ -66,8 +69,9 @@ export default function ServiceCreate() {
       endpoint: endpoint,
       parameter: parameters,
       method: method,
+      custom_gateway_endpoint: (useCustomEndpoint) ? customEndpoint : '',
       description: description,
-      body_type: bodyType,
+      body_type: (method == 'post') ? bodyType : '',
       online: online
     })
   }
@@ -88,14 +92,15 @@ export default function ServiceCreate() {
             <FormLabel>
               Nama Layanan API
             </FormLabel>
-            <Input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+            <Input type="text" onBlur={(e) => setName(e.target.value)} />
           </FormControl>
+
           <Stack mb={5} direction={'row'}>
             <FormControl isRequired>
               <FormLabel>
                 Endpoint API
               </FormLabel>
-              <Input type="text" value={endpoint} onChange={(e) => setEndpoint(e.target.value)} />
+              <Input type="text" onBlur={(e) => setEndpoint(e.target.value)} />
               <FormHelperText>
                 Contoh <LinkDefault href="https://jsonplaceholder.typicode.com/posts" text="https://jsonplaceholder.typicode.com/posts" />
               </FormHelperText>
@@ -113,6 +118,7 @@ export default function ServiceCreate() {
               </FormHelperText>
             </FormControl>
           </Stack>
+
           <FormControl
             isRequired
             mb={5}
@@ -132,19 +138,57 @@ export default function ServiceCreate() {
               Info lebih detail <LinkDefault href="https://www.baeldung.com/postman-form-data-raw-x-www-form-urlencoded" />
             </FormHelperText>
           </FormControl>
-          <FormControl display='flex' alignItems={'center'}>
-            <FormLabel htmlFor='email-alerts' mb='0'>
-              Publikasikan API
+
+          <Stack direction={'row'}>
+            <Stack w={'100%'}>
+              <FormControl display='flex' alignItems={'center'}>
+                <FormLabel htmlFor='email-alerts' mb='0'>
+                  Publikasikan API
+                </FormLabel>
+                <Switch id='email-alerts' onChange={() => {
+                  setOnline(!online)
+                }} />
+              </FormControl>
+              <FormControl mb={5}>
+                <FormHelperText>
+                  Publikasikan API agar dapat diakses oleh user
+                </FormHelperText>
+              </FormControl>
+            </Stack>
+
+            <Stack w={'100%'}>
+              <FormControl display='flex' alignItems={'center'}>
+                <FormLabel htmlFor='email-alerts' mb='0'>
+                  Gunakan endpoint custom
+                </FormLabel>
+                <Switch id='email-alerts' onChange={() => {
+                  setUseCustomEndpoint(!useCustomEndpoint)
+                }} />
+              </FormControl>
+              <FormControl mb={5}>
+                <FormHelperText>
+                  Anda bisa menggunakan endpoint custom jika diperlukan, non aktifkan jika ingin endpoint di generate oleh sistem
+                </FormHelperText>
+              </FormControl>
+            </Stack>
+          </Stack>
+
+          <FormControl
+            isRequired
+            mb={5}
+            display={
+              (useCustomEndpoint) ? 'block' : 'none'
+            }
+          >
+            <FormLabel>
+              Custom Gateway Endpoint
             </FormLabel>
-            <Switch id='email-alerts' onChange={() => {
-              setOnline(!online)
-            }} />
+            <InputGroup size='sm'>
+              <InputLeftAddon children='https://gateway.kemenag.go.id/api/' />
+              <Input type="text" onBlur={(e) => setCustomEndpoint(e.target.value)} />
+            </InputGroup>
           </FormControl>
-          <FormControl mb={5}>
-            <FormHelperText>
-              Publikasikan API agar dapat diakses oleh user
-            </FormHelperText>
-          </FormControl>
+
           <FormControl mb={5}>
             <FormLabel>
               Deskripsi
@@ -152,6 +196,7 @@ export default function ServiceCreate() {
             <Textarea onBlur={((e) => setDescription(e.target.value))}>
             </Textarea>
           </FormControl>
+
           <FormControl mb={5}>
             <FormLabel>
               Detail Parameter
@@ -222,6 +267,7 @@ export default function ServiceCreate() {
               </Table>
             </TableContainer>
           </FormControl>
+
           <Button mb={5} colorScheme="green" onClick={handleSubmit}>
             Submit
           </Button>
