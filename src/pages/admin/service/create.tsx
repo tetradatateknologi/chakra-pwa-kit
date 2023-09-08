@@ -1,67 +1,25 @@
 import { useState } from "react"
 import AdminLayout from "../../../layout/admin-layout"
 import {
-  Box, FormControl, FormLabel, Heading, Stack, Textarea, Text,
+  Box, FormControl, FormLabel, Heading, Stack, Textarea,
   Input, useColorModeValue, Switch,
-  FormHelperText, Select, Button, Flex, Icon,
-  Table, Thead,
-  Tbody, Tr,
-  Th, Td, TableContainer,
+  FormHelperText, Select, Button,
   InputGroup, InputLeftAddon
 } from "@chakra-ui/react"
-import { toast } from 'react-toastify'
-import { FiTrash, FiPlus } from "react-icons/fi";
-import { useAuth } from "../../../util/useAuth"
 import LinkDefault from "../../../components/link-default"
 import { useServiceStore } from "../../../stores/serviceStore";
-
-interface Parameter {
-  id: string,
-  name: string,
-  value: string,
-  description: string,
-}
+import ApiParameter from "../../../components/api-parameter";
 
 export default function ServiceCreate() {
   const [customEndpoint, setCustomEndpoint] = useState('')
   const [useCustomEndpoint, setUseCustomEndpoint] = useState(false)
   const [parameters, setParameters] = useState([])
-  const [parameterName, setParameterName] = useState('')
-  const [parameterValue, setParameterValue] = useState('')
-  const [parameterDescription, setParameterDescription] = useState('')
   const [method, setMethod] = useState('get')
   const [description, setDescription] = useState('')
   const [bodyType, setBodyType] = useState('form-data')
   const [online, setOnline] = useState(false)
   const [endpoint, setEndpoint] = useState('')
   const [name, setName] = useState('')
-
-  const handleAddParameter = () => {
-    // validation
-    if (!parameterName || !parameterValue) {
-      toast.error("Nama Parameter dan Contoh Nilai wajib diisi")
-      return false
-    }
-
-    // add parameter
-    const newParameter: Parameter = {
-      id: useAuth.getRandomId(),
-      name: parameterName,
-      value: parameterValue,
-      description: parameterDescription,
-    }
-    setParameters([...parameters, newParameter])
-
-    // reset state
-    setParameterName('')
-    setParameterValue('')
-    setParameterDescription('')
-  }
-
-  const handleDeleteParameter = (id) => {
-    setParameters(parameters.filter((item) => item.id !== id))
-    toast.success("Berhasil menghapus data")
-  }
 
   const handleSubmit = () => {
     useServiceStore.createNewService({
@@ -197,76 +155,11 @@ export default function ServiceCreate() {
             </Textarea>
           </FormControl>
 
-          <FormControl mb={5}>
-            <FormLabel>
-              Detail Parameter
-            </FormLabel>
-            <Flex alignItems={'center'} justifyContent={'end'}>
-              <Button variant={'ghost'} size={'sm'} colorScheme="green" onClick={handleAddParameter}>
-                <Icon
-                  mr={1}
-                  as={FiPlus}
-                />
-                Buat Parameter Baru
-              </Button>
-            </Flex>
-            <TableContainer>
-              <Table variant={'simple'}>
-                <Thead>
-                  <Tr>
-                    <Th>Nama Parameter</Th>
-                    <Th>Contoh Nilai</Th>
-                    <Th>Deskripsi</Th>
-                    <Th></Th>
-                  </Tr>
-                </Thead>
-                <Tbody>
-                  <Tr>
-                    <Td>
-                      <Input type="text" value={parameterName} onChange={(e) => setParameterName(e.target.value)} />
-                    </Td>
-                    <Td>
-                      <Input type="text" value={parameterValue} onChange={(e) => setParameterValue(e.target.value)} />
-                    </Td>
-                    <Td>
-                      <Input type="text" value={parameterDescription} onChange={(e) => setParameterDescription(e.target.value)} />
-                    </Td>
-                    <Td></Td>
-                  </Tr>
-                  {
-                    parameters.map((parameter: Parameter) => {
-                      return (
-                        <Tr key={parameter.id}>
-                          <Td>
-                            <Text>
-                              {parameter.name}
-                            </Text>
-                          </Td>
-                          <Td>
-                            <Text>
-                              {parameter.value}
-                            </Text>
-                          </Td>
-                          <Td>
-                            <Text>
-                              {parameter.description}
-                            </Text>
-                          </Td>
-                          <Td>
-                            <Button size={'sm'} colorScheme="red" onClick={() => handleDeleteParameter(parameter.id)}>
-                              <Icon
-                                as={FiTrash}
-                              />
-                            </Button>
-                          </Td>
-                        </Tr>
-                      )
-                    })
-                  }
-                </Tbody>
-              </Table>
-            </TableContainer>
-          </FormControl>
+          <ApiParameter
+            isAdmin={true}
+            parameters={parameters}
+            setParameters={setParameters}
+          />
 
           <Button mb={5} colorScheme="green" onClick={handleSubmit}>
             Submit

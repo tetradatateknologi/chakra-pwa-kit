@@ -1,13 +1,11 @@
 import AdminLayout from "../../layout/admin-layout"
 import {
   Box, FormControl, FormLabel, Heading, Stack, Flex,
-  Input, useColorModeValue, FormHelperText, Avatar, InputRightElement,
-  Button, InputGroup, Alert, AlertIcon
+  Input, useColorModeValue, FormHelperText, Avatar, Alert, AlertIcon
 } from "@chakra-ui/react"
-import { toast } from 'react-toastify'
 import { useEffect, useState } from 'react';
 import { useUserStore } from "../../stores/userStore";
-import { useUtil } from "../../util/useUtil";
+import InputWithCopy from "../../components/input-with-copy";
 
 interface IUser {
   login_name: string,
@@ -34,11 +32,6 @@ export default function Profile() {
 
     fetchData()
   }, [])
-
-  const handleCopy = () => {
-    useUtil.copyToClipboard()
-    toast.success("Berhasil Copy API Key")
-  }
 
   return (
     <AdminLayout>
@@ -82,19 +75,7 @@ export default function Profile() {
                   <FormLabel>
                     API Key
                   </FormLabel>
-                  <InputGroup size='md'>
-                    <Input
-                      pr='4.5rem'
-                      type='text'
-                      value={dataUser.login_service_api_key}
-                      id="clipboard"
-                    />
-                    <InputRightElement width='4.5rem'>
-                      <Button h='1.75rem' size='sm' onClick={handleCopy}>
-                        copy
-                      </Button>
-                    </InputRightElement>
-                  </InputGroup>
+                  <InputWithCopy value={dataUser.login_service_api_key} />
                   <FormHelperText>
                     Gunakan API Key ini untuk menggunakan API EMIS. Untuk informasi lebih lanjut mengenai cara menggunakan API EMIS, silakan baca dokumentasi.
                   </FormHelperText>
