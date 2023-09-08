@@ -1,5 +1,5 @@
-import ApiMethod from "../../components/api-method"
-import AdminLayout from "../../layout/admin-layout"
+import ApiMethod from "../../../components/api-method"
+import AdminLayout from "../../../layout/admin-layout"
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import { Flex, Box, FormControl, Heading, Input, Text, useColorModeValue, Stack, TableContainer, Table, Thead, Tr, Th, Tbody, Td } from "@chakra-ui/react"

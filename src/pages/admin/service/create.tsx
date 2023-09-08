@@ -1,5 +1,5 @@
 import { useState } from "react"
-import AdminLayout from "../../layout/admin-layout"
+import AdminLayout from "../../../layout/admin-layout"
 import {
   Box, FormControl, FormLabel, Heading, Stack, Textarea, Text,
   Input, useColorModeValue, Switch,
@@ -10,9 +10,9 @@ import {
 } from "@chakra-ui/react"
 import { toast } from 'react-toastify'
 import { FiTrash, FiPlus } from "react-icons/fi";
-import { useAuth } from "../../util/useAuth"
-import LinkDefault from "../../components/link-default"
-import { useServiceStore } from "../../stores/serviceStore";
+import { useAuth } from "../../../util/useAuth"
+import LinkDefault from "../../../components/link-default"
+import { useServiceStore } from "../../../stores/serviceStore";
 
 interface Parameter {
   id: string,
@@ -21,7 +21,7 @@ interface Parameter {
   description: string,
 }
 
-export default function FormAddService() {
+export default function ServiceCreate() {
   const [parameters, setParameters] = useState([])
   const [parameterName, setParameterName] = useState('')
   const [parameterValue, setParameterValue] = useState('')

@@ -1,4 +1,4 @@
-import AdminLayout from "../../layout/admin-layout"
+import AdminLayout from "../../../layout/admin-layout"
 import {
   Box, Heading, useColorModeValue
 } from "@chakra-ui/react"

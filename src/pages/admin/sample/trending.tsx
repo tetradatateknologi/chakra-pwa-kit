@@ -1,5 +1,5 @@
-import AdminLayout from "../../layout/admin-layout"
-import BlogList from "../../components/blog-list"
+import AdminLayout from "../../../layout/admin-layout"
+import BlogList from "../../../components/blog-list"
 import { Heading, Text } from "@chakra-ui/react"
 
 export default function Trending() {

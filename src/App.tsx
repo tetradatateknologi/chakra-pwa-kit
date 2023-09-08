@@ -3,14 +3,14 @@ import Login from './pages/login.tsx';
 import Register from './pages/register.tsx';
 import ForgotPassword from './pages/forgot-password.tsx';
 import HomeDefaultAdmin from './pages/admin/home.tsx';
-import Trending from './pages/admin/trending.tsx';
-import Explore from './pages/admin/explore.tsx';
+import Trending from './pages/admin/sample/trending.tsx';
+import Explore from './pages/admin/sample/explore.tsx';
 import Loading from './components/loading.tsx';
-import FormSample from './pages/admin/form-sample.tsx';
-import ChartSample from './pages/admin/chart-sample.tsx';
-import Documentation from './pages/admin/documentation.tsx';
-import FormAddService from './pages/admin/form-add-service.tsx';
-import Service from './pages/admin/service.tsx';
+import FormSample from './pages/admin/sample/form-sample.tsx';
+import ChartSample from './pages/admin/sample/chart-sample.tsx';
+import Documentation from './pages/admin/sample/documentation.tsx';
+import ServiceCreate from './pages/admin/service/create.tsx';
+import Service from './pages/admin/service/index.tsx';
 
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
@@ -42,7 +42,7 @@ function App() {
           {/* Admin Pages */}
           <Route path='/dashboard' element={<HomeDefaultAdmin />} />
           <Route path='/admin/service' element={<Service />} />
-          <Route path='/admin/service/new' element={<FormAddService />} />
+          <Route path='/admin/service/new' element={<ServiceCreate />} />
 
           {/* User Pages */}
           <Route path='/service' element={<ServiceUser />} />

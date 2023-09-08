@@ -1,4 +1,4 @@
-import AdminLayout from '../../layout/admin-layout';
+import AdminLayout from '../../../layout/admin-layout';
 import {
   Heading, Flex, Button, Icon, Text, SimpleGrid,
   Card, Stack, CardBody, Divider, CardFooter, ButtonGroup
@@ -6,7 +6,7 @@ import {
 import { Link } from 'react-router-dom'
 import { FiPlus } from 'react-icons/fi';
 import { useEffect, useState } from 'react';
-import { useServiceStore } from '../../stores/serviceStore';
+import { useServiceStore } from '../../../stores/serviceStore';
 
 const ServiceCard = (props: any) => {
   const { data } = props

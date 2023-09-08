@@ -1,4 +1,4 @@
-import AdminLayout from "../../layout/admin-layout"
+import AdminLayout from "../../../layout/admin-layout"
 import {
   Box, FormControl, FormLabel, Heading, Stack,
   Input, useColorModeValue, Switch, FormHelperText, Select, Button

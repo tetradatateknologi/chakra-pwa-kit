@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import AdminLayout from "../../layout/admin-layout"
-import ButtonWithModal from "../../components/button-with-modal"
+import AdminLayout from "../../../layout/admin-layout"
+import ButtonWithModal from "../../../components/button-with-modal"
 import { Heading, Text, Select, Code, FormHelperText, FormControl } from "@chakra-ui/react"
 
 interface Post {
