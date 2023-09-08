@@ -55,7 +55,7 @@ export default function Service() {
         Daftar Layanan API
       </Heading>
       <Flex alignItems={'center'} justifyContent={'end'} mb={5}>
-        <Link to={'new'}>
+        <Link to={'create'}>
           <Button size={'sm'} colorScheme="green">
             <Icon
               mr={1}

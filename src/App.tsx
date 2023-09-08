@@ -42,7 +42,7 @@ function App() {
           {/* Admin Pages */}
           <Route path='/dashboard' element={<HomeDefaultAdmin />} />
           <Route path='/admin/service' element={<Service />} />
-          <Route path='/admin/service/new' element={<ServiceCreate />} />
+          <Route path='/admin/service/create' element={<ServiceCreate />} />
 
           {/* User Pages */}
           <Route path='/service' element={<ServiceUser />} />
