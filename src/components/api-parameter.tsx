@@ -85,7 +85,7 @@ export default function ApiParameter(props: IProps) {
             </Tr>
           </Thead>
           <Tbody>
-            <Tr display={(isAdmin) ? 'flex' : 'none'}>
+            <Tr display={(isAdmin) ? 'table-row' : 'none'}>
               <Td>
                 <Input type="text" value={parameterName} onChange={(e) => setParameterName(e.target.value)} />
               </Td>
