@@ -19,8 +19,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/global.css';
-import ServiceUser from './pages/user/service.tsx';
+import ServiceUser from './pages/user/service/index.tsx';
 import Profile from './pages/user/profile.tsx';
+import ServiceDetail from './pages/user/service/detail.tsx';
 
 export const Context = React.createContext([])
 
@@ -45,6 +46,7 @@ function App() {
 
           {/* User Pages */}
           <Route path='/service' element={<ServiceUser />} />
+          <Route path='/service/:id' element={<ServiceDetail />} />
           <Route path='/profile' element={<Profile />} />
 
           {/* Sample Pages */}

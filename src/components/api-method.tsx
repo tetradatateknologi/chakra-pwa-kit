@@ -26,7 +26,7 @@ export default function ApiMethod(props: ApiMethodProps) {
       fontSize={'2xl'}
       fontWeight={'bold'}
       color={color}
-      mr={5}
+      mr={3}
     >
       {children}
     </Text>

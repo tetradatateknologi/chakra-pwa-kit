@@ -2,7 +2,6 @@ import { toast } from "react-toastify";
 import { useEnv } from "../util/useEnv";
 import { useLoading } from "../util/useLoading";
 import { useAuth } from "../util/useAuth";
-import { useAlert } from "../util/useAlert";
 
 const getServices = async () => {
   useLoading.show();
@@ -21,6 +20,25 @@ const getServices = async () => {
   };
 
   const data = await fetch(useEnv.backendUrl("service"), requestOptions);
+  const json = await data.json();
+  useLoading.hide();
+
+  return json.data;
+};
+
+const getService = async (id: string) => {
+  useLoading.show();
+
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", useAuth.getJWT());
+
+  const requestOptions: any = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow",
+  };
+
+  const data = await fetch(useEnv.backendUrl("service/" + id), requestOptions);
   const json = await data.json();
   useLoading.hide();
 
@@ -74,4 +92,5 @@ const createNewService = (params: any) => {
 export const useServiceStore = {
   createNewService,
   getServices,
+  getService,
 };

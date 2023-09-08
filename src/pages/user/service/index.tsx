@@ -1,13 +1,16 @@
-import AdminLayout from '../../layout/admin-layout';
+import AdminLayout from '../../../layout/admin-layout';
 import {
   Heading, Button, Text, SimpleGrid,
   Card, Stack, CardBody, Divider, CardFooter, ButtonGroup
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import { useServiceStore } from '../../stores/serviceStore';
+import { useServiceStore } from '../../../stores/serviceStore';
+import { useNavigate } from 'react-router-dom';
 
 const ServiceCard = (props: any) => {
   const { data } = props
+  const navigate = useNavigate()
+
   return (
     <Card w={'100%'}>
       <CardBody>
@@ -26,7 +29,9 @@ const ServiceCard = (props: any) => {
       <Divider />
       <CardFooter>
         <ButtonGroup spacing='2'>
-          <Button variant='solid' colorScheme='green'>
+          <Button variant='solid' colorScheme='green' onClick={() => {
+            navigate(data.service_keychar)
+          }}>
             Detail
           </Button>
         </ButtonGroup>
