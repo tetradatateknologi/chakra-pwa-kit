@@ -47,8 +47,8 @@ function App() {
 
           {/* User Pages */}
           <Route path='/dashboard/user' element={<HomeDefaultUser />} />
-          <Route path='/service' element={<ServiceUser />} />
-          <Route path='/service/:id' element={<ServiceDetail />} />
+          <Route path='/user/service' element={<ServiceUser />} />
+          <Route path='/user/service/:id' element={<ServiceDetail />} />
           <Route path='/profile' element={<Profile />} />
 
           {/* Sample Pages */}
