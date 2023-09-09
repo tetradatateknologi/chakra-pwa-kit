@@ -3,7 +3,7 @@ import { useAuth } from "../util/useAuth";
 
 const getAdminMenu = () => {
   const adminMenu = [
-    { name: "Dashboard", icon: FiHome, link: "/dashboard" },
+    { name: "Dashboard", icon: FiHome, link: "/dashboard/admin" },
     { name: "API Services", icon: FiPackage, link: "/admin/service" },
     { name: "Log Activity", icon: FiServer, link: "/admin/log/services" },
   ];
@@ -12,7 +12,7 @@ const getAdminMenu = () => {
 
 const getUserMenu = () => {
   const userMenu = [
-    { name: "Dashboard", icon: FiHome, link: "/dashboard" },
+    { name: "Dashboard", icon: FiHome, link: "/dashboard/user" },
     { name: "API Services", icon: FiPackage, link: "/service" },
   ];
   return userMenu;

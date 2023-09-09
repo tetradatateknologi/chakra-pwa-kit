@@ -5,7 +5,7 @@ interface IProps {
   children: ReactNode
 }
 
-const AdminLayout = (props: IProps) => {
+const UserLayout = (props: IProps) => {
   const { children } = props
   return (
     <DashboardLayout>
@@ -14,4 +14,4 @@ const AdminLayout = (props: IProps) => {
   )
 }
 
-export default AdminLayout
+export default UserLayout

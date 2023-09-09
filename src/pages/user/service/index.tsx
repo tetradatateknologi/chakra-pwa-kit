@@ -1,4 +1,3 @@
-import AdminLayout from '../../../layout/admin-layout';
 import {
   Heading, Button, Text, SimpleGrid,
   Card, Stack, CardBody, Divider, CardFooter, ButtonGroup
@@ -6,6 +5,7 @@ import {
 import { useEffect, useState } from 'react';
 import { useServiceStore } from '../../../stores/serviceStore';
 import { useNavigate } from 'react-router-dom';
+import UserLayout from '../../../layout/user-layout';
 
 const ServiceCard = (props: any) => {
   const { data } = props
@@ -53,7 +53,7 @@ export default function ServiceUser() {
   }, [])
 
   return (
-    <AdminLayout>
+    <UserLayout>
       <Heading size={'lg'} mb={5}>
         Daftar Layanan API
       </Heading>
@@ -68,6 +68,6 @@ export default function ServiceUser() {
           })
         }
       </SimpleGrid>
-    </AdminLayout>
+    </UserLayout>
   )
 }

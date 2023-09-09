@@ -29,7 +29,9 @@ const login = (params: loginParams) => {
     .then((data) => {
       toast.success("login berhasil");
       useAuth.setAuth(data);
-      window.location.href = "/dashboard";
+
+      const role = data?.payload?.login_role;
+      window.location.href = "/dashboard/" + role;
     })
     .catch((error) => {
       toast.error(

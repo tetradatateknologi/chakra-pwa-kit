@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom"
 import { useServiceStore } from "../../../stores/serviceStore"
 import { useEffect, useState } from "react"
 
-import AdminLayout from "../../../layout/admin-layout"
 import {
   Box, FormControl, Heading, Stack, Text,
   useColorModeValue, HStack
@@ -10,6 +9,7 @@ import {
 import ApiMethod from "../../../components/api-method"
 import ApiParameter from "../../../components/api-parameter"
 import InputWithCopy from "../../../components/input-with-copy"
+import UserLayout from "../../../layout/user-layout"
 
 export default function ServiceDetail() {
   const { id } = useParams()
@@ -51,7 +51,7 @@ export default function ServiceDetail() {
   }, [])
 
   return (
-    <AdminLayout>
+    <UserLayout>
       <Heading mb={5}>Detail API</Heading>
       <Box
         rounded={'lg'}
@@ -81,6 +81,6 @@ export default function ServiceDetail() {
           />
         </Stack>
       </Box>
-    </AdminLayout>
+    </UserLayout>
   )
 }

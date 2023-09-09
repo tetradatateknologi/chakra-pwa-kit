@@ -6,6 +6,7 @@ import {
 import { useEffect, useState } from 'react';
 import { useUserStore } from "../../stores/userStore";
 import InputWithCopy from "../../components/input-with-copy";
+import UserLayout from "../../layout/user-layout";
 
 interface IUser {
   login_name: string,
@@ -34,7 +35,7 @@ export default function Profile() {
   }, [])
 
   return (
-    <AdminLayout>
+    <UserLayout>
       <Heading size={'lg'} mb={5}>Profil Saya</Heading>
       <Box
         rounded={'lg'}
@@ -91,6 +92,6 @@ export default function Profile() {
           </Stack>
         </Stack>
       </Box>
-    </AdminLayout>
+    </UserLayout>
   )
 }

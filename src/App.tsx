@@ -22,6 +22,7 @@ import './styles/global.css';
 import ServiceUser from './pages/user/service/index.tsx';
 import Profile from './pages/user/profile.tsx';
 import ServiceDetail from './pages/user/service/detail.tsx';
+import HomeDefaultUser from './pages/user/home.tsx';
 
 export const Context = React.createContext([])
 
@@ -40,11 +41,12 @@ function App() {
           <Route path='/forgot-password' element={<ForgotPassword />} />
 
           {/* Admin Pages */}
-          <Route path='/dashboard' element={<HomeDefaultAdmin />} />
+          <Route path='/dashboard/admin' element={<HomeDefaultAdmin />} />
           <Route path='/admin/service' element={<Service />} />
           <Route path='/admin/service/create' element={<ServiceCreate />} />
 
           {/* User Pages */}
+          <Route path='/dashboard/user' element={<HomeDefaultUser />} />
           <Route path='/service' element={<ServiceUser />} />
           <Route path='/service/:id' element={<ServiceDetail />} />
           <Route path='/profile' element={<Profile />} />
