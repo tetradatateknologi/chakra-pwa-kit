@@ -23,6 +23,7 @@ import ServiceUser from './pages/user/service/index.tsx';
 import Profile from './pages/user/profile.tsx';
 import ServiceDetail from './pages/user/service/detail.tsx';
 import HomeDefaultUser from './pages/user/home.tsx';
+import NotFoundPage from './pages/error/404.tsx';
 
 export const Context = React.createContext([])
 
@@ -58,6 +59,9 @@ function App() {
           <Route path='/sample/chart' element={<ChartSample />} />
           <Route path='/sample/documentation' element={<Documentation />} />
           <Route path='/sample/landing-page' element={<Home />} />
+
+          {/* Error Pages */}
+          <Route path='*' element={<NotFoundPage />} />
         </Routes>
       </Router>
     </>
