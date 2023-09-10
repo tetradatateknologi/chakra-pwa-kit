@@ -34,15 +34,17 @@ export default function Service() {
               mr={1}
               as={FiPlus}
             />
-            Buat Service Baru
+            Buat Layanan Baru
           </Button>
         </Link>
       </Flex>
       <Box mt={10}>
         <DataTable value={services} paginator rows={5} rowsPerPageOptions={[5, 10, 25, 50]} tableStyle={{ minWidth: '50rem' }}>
-          <Column field="service_keychar" filter filterPlaceholder="Cari berdasarkan ID" header="ID" style={{ width: '10%' }} />
-          <Column field="service_name" header="Nama Layanan" filter filterPlaceholder="Cari berdasarkan nama" style={{ width: '25%' }} />
-          <Column field="service_description" header="Deskripsi" style={{ width: '50%' }} />
+          <Column filter field="service_keychar" header="ID" style={{ width: '10%' }} />
+          <Column filter field="service_name" header="Nama Layanan" style={{ width: '25%' }} />
+          <Column field="service_description" header="Deskripsi" style={{ width: '30%' }} />
+          <Column filter field="service_gateway_endpoint" header="Gateway Endpoint" style={{ width: '20%' }} />
+          <Column filter field="service_endpoint" header="Origin Endpoint" style={{ width: '20%' }} />
           <Column style={{ width: '25%' }} header="Aksi" body={<ButtonWithModal title='Detail' content={'publa'} />} />
         </DataTable>
       </Box>
