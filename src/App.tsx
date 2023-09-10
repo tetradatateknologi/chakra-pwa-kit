@@ -1,3 +1,13 @@
+import React from 'react';
+import { ToastContainer } from 'react-toastify';
+import { useAlert } from './util/useAlert.ts';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import 'primereact/resources/themes/lara-light-indigo/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'react-toastify/dist/ReactToastify.css';
+import './styles/global.css';
+
 import Home from './pages/home.tsx';
 import Login from './pages/login.tsx';
 import Register from './pages/register.tsx';
@@ -11,14 +21,6 @@ import ChartSample from './pages/admin/sample/chart-sample.tsx';
 import Documentation from './pages/admin/sample/documentation.tsx';
 import ServiceCreate from './pages/admin/service/create.tsx';
 import Service from './pages/admin/service/index.tsx';
-
-import React from 'react';
-import { ToastContainer } from 'react-toastify';
-import { useAlert } from './util/useAlert.ts';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-import 'react-toastify/dist/ReactToastify.css';
-import './styles/global.css';
 import ServiceUser from './pages/user/service/index.tsx';
 import Profile from './pages/user/profile.tsx';
 import ServiceDetail from './pages/user/service/detail.tsx';

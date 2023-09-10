@@ -3,14 +3,17 @@ import { useEnv } from "../util/useEnv";
 import { useLoading } from "../util/useLoading";
 import { useAuth } from "../util/useAuth";
 
-const getServices = async () => {
+const getServices = async (shortDesc: boolean = true) => {
   useLoading.show();
 
   const myHeaders = new Headers();
   myHeaders.append("Authorization", useAuth.getJWT());
 
   const formdata = new FormData();
-  formdata.append("show_all", 1);
+  formdata.append("show_all", "1");
+  if (shortDesc) {
+    formdata.append("short", "1");
+  }
 
   const requestOptions: any = {
     method: "POST",
@@ -20,6 +23,29 @@ const getServices = async () => {
   };
 
   const data = await fetch(useEnv.backendUrl("service"), requestOptions);
+  const json = await data.json();
+  useLoading.hide();
+
+  return json.data;
+};
+
+const getLogServices = async () => {
+  useLoading.show();
+
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", useAuth.getJWT());
+
+  const formdata = new FormData();
+  formdata.append("show_all", "1");
+
+  const requestOptions: any = {
+    method: "POST",
+    headers: myHeaders,
+    body: formdata,
+    redirect: "follow",
+  };
+
+  const data = await fetch(useEnv.backendUrl("service/log"), requestOptions);
   const json = await data.json();
   useLoading.hide();
 
@@ -94,4 +120,5 @@ export const useServiceStore = {
   createNewService,
   getServices,
   getService,
+  getLogServices,
 };

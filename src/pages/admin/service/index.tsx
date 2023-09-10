@@ -1,41 +1,14 @@
 import AdminLayout from '../../../layout/admin-layout';
 import {
-  Heading, Flex, Button, Icon, Text, SimpleGrid,
-  Card, Stack, CardBody, Divider, CardFooter, ButtonGroup
+  Heading, Flex, Button, Icon, Box
 } from '@chakra-ui/react';
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
 import { Link } from 'react-router-dom'
 import { FiPlus } from 'react-icons/fi';
 import { useEffect, useState } from 'react';
 import { useServiceStore } from '../../../stores/serviceStore';
-
-const ServiceCard = (props: any) => {
-  const { data } = props
-  return (
-    <Card w={'100%'}>
-      <CardBody>
-        <Stack mt='6' spacing='3'>
-          <Heading size='md'>
-            {data.service_name}
-          </Heading>
-          <Text>
-            {data.service_description}
-          </Text>
-          <Text textAlign={'end'} fontFamily={'mono'}>
-            {data.service_keychar}
-          </Text>
-        </Stack>
-      </CardBody>
-      <Divider />
-      <CardFooter>
-        <ButtonGroup spacing='2'>
-          <Button variant='solid' colorScheme='green'>
-            Detail
-          </Button>
-        </ButtonGroup>
-      </CardFooter>
-    </Card>
-  )
-}
+import ButtonWithModal from '../../../components/button-with-modal';
 
 export default function Service() {
   const [services, setServices] = useState([])
@@ -56,7 +29,7 @@ export default function Service() {
       </Heading>
       <Flex alignItems={'center'} justifyContent={'end'} mb={5}>
         <Link to={'create'}>
-          <Button size={'sm'} colorScheme="green">
+          <Button colorScheme="green">
             <Icon
               mr={1}
               as={FiPlus}
@@ -65,17 +38,14 @@ export default function Service() {
           </Button>
         </Link>
       </Flex>
-      <SimpleGrid justifyItems={'center'} columns={{ base: 1, md: 3 }} spacing={3}>
-        {
-          services.map((service) => {
-            return (
-              <ServiceCard
-                data={service}
-              />
-            )
-          })
-        }
-      </SimpleGrid>
+      <Box mt={10}>
+        <DataTable value={services} paginator rows={5} rowsPerPageOptions={[5, 10, 25, 50]} tableStyle={{ minWidth: '50rem' }}>
+          <Column field="service_keychar" filter filterPlaceholder="Cari berdasarkan ID" header="ID" style={{ width: '10%' }} />
+          <Column field="service_name" header="Nama Layanan" filter filterPlaceholder="Cari berdasarkan nama" style={{ width: '25%' }} />
+          <Column field="service_description" header="Deskripsi" style={{ width: '50%' }} />
+          <Column style={{ width: '25%' }} header="Aksi" body={<ButtonWithModal title='Detail' content={'publa'} />} />
+        </DataTable>
+      </Box>
     </AdminLayout>
   )
 }
