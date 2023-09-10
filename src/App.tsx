@@ -27,6 +27,7 @@ import ServiceDetail from './pages/user/service/detail.tsx';
 import HomeDefaultUser from './pages/user/home.tsx';
 import NotFoundPage from './pages/error/404.tsx';
 import ServiceLogAdmin from './pages/admin/service/log.tsx';
+import ServiceEdit from './pages/admin/service/edit.tsx';
 
 export const Context = React.createContext([])
 
@@ -49,6 +50,7 @@ function App() {
           <Route path='/admin/service' element={<Service />} />
           <Route path='/admin/service/create' element={<ServiceCreate />} />
           <Route path='/admin/service/log' element={<ServiceLogAdmin />} />
+          <Route path='/admin/service/edit/:id' element={<ServiceEdit />} />
 
           {/* User Pages */}
           <Route path='/dashboard/user' element={<HomeDefaultUser />} />

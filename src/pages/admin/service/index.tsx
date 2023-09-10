@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom'
 import { FiPlus } from 'react-icons/fi';
 import { useEffect, useState } from 'react';
 import { useServiceStore } from '../../../stores/serviceStore';
-import ButtonWithModal from '../../../components/button-with-modal';
 
 export default function Service() {
   const [services, setServices] = useState([])
@@ -21,6 +20,26 @@ export default function Service() {
 
     fetchData()
   }, [])
+
+  const ButtonEdit = (row: any) => {
+    return (
+      <Link to={'edit/' + row.service_keychar}>
+        <Button colorScheme='green'>
+          Edit
+        </Button>
+      </Link>
+    )
+  }
+
+  const ButtonView = (row: any) => {
+    return (
+      <Link to={'/user/service/' + row.service_keychar}>
+        <Button colorScheme='blue'>
+          Dokumentasi
+        </Button>
+      </Link>
+    )
+  }
 
   return (
     <AdminLayout>
@@ -39,13 +58,14 @@ export default function Service() {
         </Link>
       </Flex>
       <Box mt={10}>
-        <DataTable value={services} paginator rows={5} rowsPerPageOptions={[5, 10, 25, 50]} tableStyle={{ minWidth: '50rem' }}>
-          <Column filter field="service_keychar" header="ID" style={{ width: '10%' }} />
-          <Column filter field="service_name" header="Nama Layanan" style={{ width: '25%' }} />
-          <Column field="service_description" header="Deskripsi" style={{ width: '30%' }} />
-          <Column filter field="service_gateway_endpoint" header="Gateway Endpoint" style={{ width: '20%' }} />
-          <Column filter field="service_endpoint" header="Origin Endpoint" style={{ width: '20%' }} />
-          <Column style={{ width: '25%' }} header="Aksi" body={<ButtonWithModal title='Detail' content={'publa'} />} />
+        <DataTable value={services} paginator rows={5} rowsPerPageOptions={[5, 10, 25, 50]}>
+          <Column filter field="service_keychar" header="ID" />
+          <Column filter field="updated_at" header="Updated at" />
+          <Column filter field="service_name" header="Nama Layanan" />
+          <Column filter field="service_gateway_endpoint" header="Gateway Endpoint" />
+          <Column field="service_description" header="Deskripsi" />
+          <Column body={ButtonEdit} />
+          <Column body={ButtonView} />
         </DataTable>
       </Box>
     </AdminLayout>

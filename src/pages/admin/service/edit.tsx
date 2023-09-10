@@ -1,12 +1,15 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import AdminLayout from "../../../layout/admin-layout"
 import {
   Heading
 } from "@chakra-ui/react"
 import { useServiceStore } from "../../../stores/serviceStore";
 import FormService from "../../../components/form-service";
+import { useParams } from "react-router-dom"
 
-export default function ServiceCreate() {
+export default function ServiceEdit() {
+  const { id } = useParams()
+
   const [customEndpoint, setCustomEndpoint] = useState('')
   const [useCustomEndpoint, setUseCustomEndpoint] = useState(false)
   const [parameters, setParameters] = useState([])
@@ -17,8 +20,24 @@ export default function ServiceCreate() {
   const [endpoint, setEndpoint] = useState('')
   const [name, setName] = useState('')
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await useServiceStore.getService(id)
+      setName(data.service_name)
+      setCustomEndpoint(data.service_gateway_endpoint)
+      setDescription(data.service_description)
+      setParameters(data.service_parameter)
+      setEndpoint(data.service_endpoint)
+      setBodyType(data.service_body_type)
+      setOnline(data.service_online)
+      setMethod(data.service_method)
+    }
+    fetchData()
+  }, [])
+
   const handleSubmit = () => {
-    useServiceStore.createNewService({
+    useServiceStore.updateService({
+      keychar: id,
       name: name,
       endpoint: endpoint,
       parameter: parameters,

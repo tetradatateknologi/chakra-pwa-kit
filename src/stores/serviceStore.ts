@@ -116,9 +116,57 @@ const createNewService = (params: any) => {
     });
 };
 
+const updateService = (params: any) => {
+  useLoading.show();
+
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", useAuth.getJWT());
+  myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+  const formdata = new URLSearchParams();
+  formdata.append("keychar", params.keychar);
+  formdata.append("name", params.name);
+  formdata.append("endpoint", params.endpoint);
+  formdata.append("method", params.method);
+  formdata.append("description", params?.description);
+  formdata.append("body_type", params?.body_type);
+  formdata.append("online", params?.online);
+  formdata.append("parameter", JSON.stringify(params?.parameter));
+  formdata.append("custom_gateway_endpoint", params?.custom_gateway_endpoint);
+
+  const requestOptions: any = {
+    method: "PUT",
+    headers: myHeaders,
+    body: formdata,
+    redirect: "follow",
+  };
+
+  fetch(useEnv.backendUrl("service"), requestOptions)
+    .then((response) => response.json())
+    .then((response) => {
+      if (response.status_code == 200) {
+        toast.success("Berhasil mengupdate data");
+        window.history.back();
+        return true;
+      }
+      if (response.status_code == 400) {
+        toast.error(response.message);
+        useLoading.hide();
+        return false;
+      }
+      throw new Error();
+    })
+    .catch((error) => {
+      toast.error("terjadi kesalahan pada aplikasi");
+      console.log("error", error);
+      useLoading.hide();
+    });
+};
+
 export const useServiceStore = {
   createNewService,
   getServices,
   getService,
   getLogServices,
+  updateService,
 };
