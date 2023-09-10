@@ -162,7 +162,7 @@ export default function ServiceCreate() {
           />
 
           <Button mb={5} colorScheme="green" onClick={handleSubmit}>
-            Submit
+            Simpan
           </Button>
         </Stack>
       </Box>
