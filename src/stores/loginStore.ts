@@ -30,7 +30,7 @@ const login = (params: loginParams) => {
       toast.success("login berhasil");
       useAuth.setAuth(data);
 
-      const role = data?.payload?.login_role;
+      const role = (data?.payload?.login_role) ? data?.payload?.login_role : 'user';
       window.location.href = "/dashboard/" + role;
     })
     .catch((error) => {

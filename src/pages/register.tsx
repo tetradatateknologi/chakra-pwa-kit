@@ -38,7 +38,7 @@ export default function Register() {
                         Registrasi
                     </Heading>
                     <Text fontSize={'lg'} color={'gray.600'} textAlign={'center'}>
-                        Silahkan lakukan registrasi, untuk dapat terintegrasi dan bisa menggunakan layanan API kami
+                        Silahkan lakukan registrasi, untuk dapat menggunakan aplikasi
                     </Text>
                 </Stack>
                 <Box

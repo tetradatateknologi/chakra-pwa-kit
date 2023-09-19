@@ -7,7 +7,7 @@ const Logo = (props: any) => {
   return (
     <Image
       className={(loading) ? 'logo-animation' : ''}
-      src='/logo-emis.png'
+      src='/vite.svg'
       width={(width) ? `${width}px` : '387px'}
       height={(height) ? `${height}px` : '124px'}
     >

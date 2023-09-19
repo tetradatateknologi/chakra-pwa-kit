@@ -224,7 +224,9 @@ const MobileNav = ({ onOpen, user, ...rest }: MobileProps) => {
                     {user.login_name}
                   </Text>
                   <Text fontSize="xs" color="gray.600">
-                    {user.login_role}
+                    {
+                      (user.login_role) ? user.login_role : 'user'
+                    }
                   </Text>
                 </VStack>
                 <Box display={{ base: 'none', md: 'flex' }}>

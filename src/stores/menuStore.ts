@@ -1,4 +1,4 @@
-import { FiHome, FiPackage, FiServer } from "react-icons/fi";
+import { FiHome, FiPackage, FiServer, FiFilm, FiBook } from "react-icons/fi";
 import { useAuth } from "../util/useAuth";
 
 const getAdminMenu = () => {
@@ -13,7 +13,35 @@ const getAdminMenu = () => {
 const getUserMenu = () => {
   const userMenu = [
     { name: "Dashboard", icon: FiHome, link: "/dashboard/user" },
-    { name: "Daftar Layanan", icon: FiPackage, link: "/user/service" },
+    {
+      name: "Sample Page",
+      type: "dropdown",
+      icon: FiPackage,
+      data: [
+        {
+          label: "Form",
+          link: "/sample/form",
+        },
+        {
+          label: "Blog List",
+          link: "/sample/trending",
+        },
+        {
+          label: "How to Use Effect",
+          link: "/sample/explore",
+        },
+        {
+          label: "Chart JS",
+          link: "/sample/chart",
+        },
+        {
+          label: "API Documentation",
+          link: "/sample/documentation",
+        },
+      ],
+    },
+    { name: "Film", icon: FiFilm, link: "/dashboard/film" },
+    { name: "Course", icon: FiBook, link: "/dashboard/film" },
   ];
   return userMenu;
 };
@@ -24,6 +52,8 @@ const getMenuByRole = () => {
     case "admin":
       return getAdminMenu();
     case "user":
+      return getUserMenu();
+    default:
       return getUserMenu();
   }
 };
