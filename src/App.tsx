@@ -21,9 +21,7 @@ import ChartSample from './pages/admin/sample/chart-sample.tsx';
 import Documentation from './pages/admin/sample/documentation.tsx';
 import ServiceCreate from './pages/admin/service/create.tsx';
 import Service from './pages/admin/service/index.tsx';
-import ServiceUser from './pages/user/service/index.tsx';
 import Profile from './pages/user/profile.tsx';
-import ServiceDetail from './pages/user/service/detail.tsx';
 import HomeDefaultUser from './pages/user/home.tsx';
 import NotFoundPage from './pages/error/404.tsx';
 import ServiceLogAdmin from './pages/admin/service/log.tsx';
@@ -54,8 +52,6 @@ function App() {
 
           {/* User Pages */}
           <Route path='/dashboard/user' element={<HomeDefaultUser />} />
-          <Route path='/user/service' element={<ServiceUser />} />
-          <Route path='/user/service/:id' element={<ServiceDetail />} />
           <Route path='/profile' element={<Profile />} />
 
           {/* Sample Pages */}
