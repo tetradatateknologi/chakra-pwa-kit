@@ -26,6 +26,9 @@ import HomeDefaultUser from './pages/user/home.tsx';
 import NotFoundPage from './pages/error/404.tsx';
 import ServiceLogAdmin from './pages/admin/service/log.tsx';
 import ServiceEdit from './pages/admin/service/edit.tsx';
+import Film from './pages/admin/film/index.tsx';
+import FilmCreate from './pages/admin/film/create.tsx';
+import FilmEdit from './pages/admin/film/edit.tsx';
 
 export const Context = React.createContext([])
 
@@ -45,10 +48,17 @@ function App() {
 
           {/* Admin Pages */}
           <Route path='/dashboard/admin' element={<HomeDefaultAdmin />} />
+
+          {/* Service */}
           <Route path='/admin/service' element={<Service />} />
           <Route path='/admin/service/create' element={<ServiceCreate />} />
           <Route path='/admin/service/log' element={<ServiceLogAdmin />} />
           <Route path='/admin/service/edit/:id' element={<ServiceEdit />} />
+
+          {/* Film */}
+          <Route path='/admin/film' element={<Film />} />
+          <Route path='/admin/film/create' element={<FilmCreate />} />
+          <Route path='/admin/film/edit/:id' element={<FilmEdit />} />
 
           {/* User Pages */}
           <Route path='/dashboard/user' element={<HomeDefaultUser />} />

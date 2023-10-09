@@ -12,7 +12,7 @@ const PublicLayout = (props: PublicLayoutProps) => {
       minH={'100vh'}
       align={'center'}
       justify={'center'}
-      bgGradient='linear(to-b, blue.100, green.100)'
+      bgGradient='linear(to-b, green.100, green.100)'
     >
       {children}
     </ Flex>

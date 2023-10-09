@@ -4,8 +4,8 @@ import {
   FormHelperText, Select, Button,
   InputGroup, InputLeftAddon
 } from "@chakra-ui/react"
-import ApiParameter from "./api-parameter";
-import LinkDefault from "./link-default";
+import ApiParameter from "../api-parameter";
+import LinkDefault from "../link-default";
 
 interface FormServiceProps {
   customEndpoint: string,
@@ -176,7 +176,7 @@ export default function FormService(props: FormServiceProps) {
         />
 
         <Button mb={5} colorScheme="green" onClick={handleSubmit}>
-          Simpan
+          Submit
         </Button>
       </Stack>
     </Box>

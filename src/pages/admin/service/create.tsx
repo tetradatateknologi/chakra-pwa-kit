@@ -4,7 +4,7 @@ import {
   Heading
 } from "@chakra-ui/react"
 import { useServiceStore } from "../../../stores/serviceStore";
-import FormService from "../../../components/form-service";
+import FormService from "../../../components/form/form-service";
 
 export default function ServiceCreate() {
   const [customEndpoint, setCustomEndpoint] = useState('')

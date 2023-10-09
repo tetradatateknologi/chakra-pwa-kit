@@ -4,7 +4,7 @@ import {
   Heading
 } from "@chakra-ui/react"
 import { useServiceStore } from "../../../stores/serviceStore";
-import FormService from "../../../components/form-service";
+import FormService from "../../../components/form/form-service";
 import { useParams } from "react-router-dom"
 
 export default function ServiceEdit() {
