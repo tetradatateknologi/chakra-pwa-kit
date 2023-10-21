@@ -8,7 +8,7 @@ import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/global.css';
 
-import Loading from './components/loading.tsx';
+import Loading from './components/other/loading.tsx';
 import NotFoundPage from './pages/error/404.tsx';
 import Home from './pages/public/home.tsx';
 
