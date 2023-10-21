@@ -1,4 +1,5 @@
-import { Text, Heading } from "@chakra-ui/react";
+import { Heading } from "@chakra-ui/react";
+import CardBlogPost from "../../components/other/card-blog-post";
 import MobileLayout from "../../layout/mobile-layout";
 
 export default function Feed() {
@@ -7,9 +8,9 @@ export default function Feed() {
       <Heading>
         Feed
       </Heading>
-      <Text>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat libero deserunt ea suscipit quidem? Quaerat omnis pariatur harum unde aspernatur et ab vitae fugiat alias illo eveniet, culpa aperiam possimus?
-      </Text>
+      <CardBlogPost />
+      <CardBlogPost />
+      <CardBlogPost />
     </MobileLayout>
   )
 }

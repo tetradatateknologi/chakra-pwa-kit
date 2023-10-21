@@ -7,7 +7,7 @@ import {
 export default function TopNavigation() {
   return (
     <Stack
-      bg={'blue.500'}
+      bgGradient='linear(to-l, blue.500, blue.400)'
       width={'100%'}
       height={'5vh'}
       color={'white'}
@@ -22,7 +22,7 @@ export default function TopNavigation() {
           fontSize={'lg'}
           fontWeight={'semibold'}
         >
-          Apps Name
+          Your Apps Name
         </Text>
       </Box>
     </Stack>

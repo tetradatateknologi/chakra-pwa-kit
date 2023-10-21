@@ -13,12 +13,20 @@ const init = () => {
   }
 };
 
-const setSuccessMessage = (message: string) => {
-  localStorage.setItem("success", message);
+const setSuccessMessage = (message: string, future: boolean = false) => {
+  if (future) {
+    localStorage.setItem("success", message);
+  } else {
+    toast.success(message);
+  }
 };
 
-const setErrorMessage = (message: string) => {
-  localStorage.setItem("error", message);
+const setErrorMessage = (message: string, future: boolean = false) => {
+  if (future) {
+    localStorage.setItem("error", message);
+  } else {
+    toast.error(message);
+  }
 };
 
 export const useAlert = {
