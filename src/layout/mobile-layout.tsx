@@ -1,4 +1,5 @@
 import {
+  Box,
   Container,
   Stack,
   VStack
@@ -14,24 +15,26 @@ interface MobileLayoutProps {
 export default function MobileLayout(props: MobileLayoutProps) {
   const { children } = props
   return (
-    <Container maxW={'container.sm'} px={{ sm: '0px' }}>
-      <VStack
-        bg={'gray.100'}
-        height={'100vh'}
-        spacing={0}
-        overflow={'hidden'}
-      >
-        <TopNavigation />
-        <Stack
-          width={'100%'}
-          height={'88vh'}
-          overflowY={'scroll'}
-          p={10}
+    <Box bg={'blue.50'}>
+      <Container maxW={'container.sm'} px={{ sm: '0px' }}>
+        <VStack
+          bg={'white'}
+          height={'100vh'}
+          spacing={0}
+          overflow={'hidden'}
         >
-          {children}
-        </Stack>
-        <BottomNavigation />
-      </VStack>
-    </Container>
+          <TopNavigation />
+          <Stack
+            width={'100%'}
+            height={'88vh'}
+            overflowY={'scroll'}
+            p={10}
+          >
+            {children}
+          </Stack>
+          <BottomNavigation />
+        </VStack>
+      </Container>
+    </Box>
   )
 }

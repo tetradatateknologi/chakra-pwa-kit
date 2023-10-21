@@ -18,6 +18,7 @@ export default function ButtonBottomNavigation(props: IProps) {
       color={(isActive) ? 'white' : 'blue.500'}
       py={'5px'}
       px={'5%'}
+      width={'25%'}
       textAlign={'center'}
     >
       <Link to={href}>
