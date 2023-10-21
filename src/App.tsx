@@ -11,6 +11,9 @@ import './styles/global.css';
 import Loading from './components/other/loading.tsx';
 import NotFoundPage from './pages/error/404.tsx';
 import Home from './pages/public/home.tsx';
+import Feed from './pages/public/feed.tsx';
+import Activity from './pages/public/activity.tsx';
+import Profile from './pages/public/profile.tsx';
 
 export const Context = React.createContext([])
 
@@ -24,6 +27,9 @@ function App() {
         <Routes>
           {/* Public Pages */}
           <Route path='/' element={<Home />} />
+          <Route path='/feed' element={<Feed />} />
+          <Route path='/activity' element={<Activity />} />
+          <Route path='/profile' element={<Profile />} />
 
           {/* Error Pages */}
           <Route path='*' element={<NotFoundPage />} />

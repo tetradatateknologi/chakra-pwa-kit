@@ -3,8 +3,12 @@ import {
 } from "@chakra-ui/react";
 import { FiActivity, FiHome, FiInstagram, FiUser } from "react-icons/fi";
 import ButtonBottomNavigation from "../button/button-bottom-navigation";
+import { useLocation } from "react-router-dom";
 
 export default function BottomNavigation() {
+  const location = useLocation()
+  const path = location.pathname
+
   return (
     <Stack
       bg={'white'}
@@ -16,25 +20,25 @@ export default function BottomNavigation() {
           icon={FiHome}
           text={'Home'}
           href={'/'}
-          isActive={false}
+          isActive={(path == '/') ? true : false}
         />
         <ButtonBottomNavigation
           icon={FiInstagram}
           text={'Feed'}
-          href={'/'}
-          isActive={true}
+          href={'/feed'}
+          isActive={(path == '/feed') ? true : false}
         />
         <ButtonBottomNavigation
           icon={FiActivity}
           text={'Activity'}
-          href={'/'}
-          isActive={false}
+          href={'/activity'}
+          isActive={(path == '/activity') ? true : false}
         />
         <ButtonBottomNavigation
           icon={FiUser}
           text={'Profile'}
-          href={'/'}
-          isActive={false}
+          href={'/profile'}
+          isActive={(path == '/profile') ? true : false}
         />
       </Stack>
     </Stack>
