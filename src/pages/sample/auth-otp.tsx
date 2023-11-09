@@ -1,5 +1,11 @@
-import { Container, Flex, Heading, PinInput, PinInputField, Image, ScaleFade } from "@chakra-ui/react";
+import {
+  Container, Flex, Heading,
+  Image,
+  PinInput, PinInputField,
+  ScaleFade
+} from "@chakra-ui/react";
 import MobileLayout from "../../layout/mobile-layout";
+
 
 export default function AuthOtp() {
   return (
@@ -22,7 +28,9 @@ export default function AuthOtp() {
           <Heading mb={3}>
             Please input your OTP
           </Heading>
-          <PinInput size={'lg'}>
+          <PinInput size={'lg'} onComplete={() => {
+            alert('ok')
+          }}>
             <PinInputField />
             <PinInputField />
             <PinInputField />
