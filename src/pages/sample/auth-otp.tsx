@@ -1,4 +1,4 @@
-import { Container, Flex, Heading, PinInput, PinInputField, Image } from "@chakra-ui/react";
+import { Container, Flex, Heading, PinInput, PinInputField, Image, ScaleFade } from "@chakra-ui/react";
 import MobileLayout from "../../layout/mobile-layout";
 
 export default function AuthOtp() {
@@ -10,13 +10,15 @@ export default function AuthOtp() {
         textAlign={'center'}
       >
         <Container>
-          <Flex justifyContent={'center'}>
-            <Image
-              height={'300px'}
-              src={'https://d1j87w3j7cc3a6.cloudfront.net/prime/static/prime/images/feature/feature-spot-image-driver.svg'}
-              mb={5}
-            />
-          </Flex>
+          <ScaleFade initialScale={0.5} in>
+            <Flex justifyContent={'center'}>
+              <Image
+                height={'300px'}
+                src={'https://d1j87w3j7cc3a6.cloudfront.net/prime/static/prime/images/feature/feature-spot-image-driver.svg'}
+                mb={5}
+              />
+            </Flex>
+          </ScaleFade>
           <Heading mb={3}>
             Please input your OTP
           </Heading>
