@@ -27,7 +27,7 @@ export default function MobileLayout(props: MobileLayoutProps) {
           <TopNavigation simpleMode={simpleMode} />
           <Stack
             width={'100%'}
-            height={'88vh'}
+            height={(simpleMode) ? '95vh' : '88vh'}
             overflowY={'scroll'}
             p={10}
           >

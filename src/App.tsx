@@ -15,6 +15,7 @@ import Feed from './pages/public/feed.tsx';
 import Activity from './pages/public/activity.tsx';
 import Profile from './pages/public/profile.tsx';
 import Blank from './pages/sample/blank.tsx';
+import NotFound from './pages/sample/not-found.tsx';
 
 export const Context = React.createContext([])
 
@@ -34,6 +35,7 @@ function App() {
 
           {/* Sample Pages */}
           <Route path='/sample/blank' element={<Blank />} />
+          <Route path='/sample/not-found' element={<NotFound />} />
 
           {/* Error Pages */}
           <Route path='*' element={<NotFoundPage />} />

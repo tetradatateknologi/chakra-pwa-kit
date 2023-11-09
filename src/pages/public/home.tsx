@@ -1,6 +1,7 @@
-import { Box, Button, Container, HStack, Heading, Text } from "@chakra-ui/react";
-import MobileLayout from "../../layout/mobile-layout";
+import { Box, Button, Container, HStack, Heading, Icon, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import MobileLayout from "../../layout/mobile-layout";
+import { FiEdit } from "react-icons/fi";
 
 interface SampleBoxProps {
   title: string
@@ -12,15 +13,16 @@ const SampleBox = (props: SampleBoxProps) => {
   const { title, link, desc } = props
   return (
     <Box boxShadow={'xl'} display={'flex'}>
-      <Container px={'20px'} w={'300px'} py={'50px'}>
+      <Container px={'20px'} w={'300px'} py={'50px'} h={'250px'}>
         <Heading fontSize={'2xl'} mb={2}>
           {title}
         </Heading>
-        <Text mb={3}>
+        <Text mb={3} height={'86px'}>
           {desc}
         </Text>
         <Link to={link}>
           <Button variant={'outline'} colorScheme={'blue'}>
+            <Icon as={FiEdit} me={2} />
             View Detail
           </Button>
         </Link>
@@ -35,7 +37,12 @@ export default function Home() {
       title: 'Blank',
       desc: 'The following is an example of a blank page that does not contain any content.',
       link: '/sample/blank'
-    }
+    },
+    {
+      title: 'Not Found',
+      desc: 'The following is an example of a page not found with an eye-catching image illustration',
+      link: '/sample/not-found'
+    },
   ]
 
   return (
