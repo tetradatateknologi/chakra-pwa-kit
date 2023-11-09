@@ -10,10 +10,11 @@ import TopNavigation from "../components/other/top-navigation";
 
 interface MobileLayoutProps {
   children: ReactNode
+  simpleMode?: boolean
 }
 
 export default function MobileLayout(props: MobileLayoutProps) {
-  const { children } = props
+  const { children, simpleMode } = props
   return (
     <Box bg={'blue.50'}>
       <Container maxW={'container.sm'} px={{ sm: '0px' }}>
@@ -23,7 +24,7 @@ export default function MobileLayout(props: MobileLayoutProps) {
           spacing={0}
           overflow={'hidden'}
         >
-          <TopNavigation />
+          <TopNavigation simpleMode={simpleMode} />
           <Stack
             width={'100%'}
             height={'88vh'}
@@ -32,7 +33,7 @@ export default function MobileLayout(props: MobileLayoutProps) {
           >
             {children}
           </Stack>
-          <BottomNavigation />
+          <BottomNavigation simpleMode={simpleMode} />
         </VStack>
       </Container>
     </Box>

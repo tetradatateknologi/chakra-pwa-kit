@@ -1,10 +1,17 @@
 import {
   Text,
   Box,
-  Stack
+  Stack,
+  Icon
 } from "@chakra-ui/react";
+import { FiArrowLeft } from "react-icons/fi";
 
-export default function TopNavigation() {
+interface IProps {
+  simpleMode?: boolean
+}
+
+export default function TopNavigation(props: IProps) {
+  const { simpleMode } = props
   return (
     <Stack
       bgGradient='linear(to-l, blue.500, blue.400)'
@@ -22,6 +29,16 @@ export default function TopNavigation() {
           fontSize={'lg'}
           fontWeight={'semibold'}
         >
+          <Icon
+            cursor={'pointer'}
+            as={FiArrowLeft}
+            fontSize={'xl'}
+            me={5}
+            display={(simpleMode) ? 'inline' : 'none'}
+            onClick={() => {
+              window.history.back()
+            }}
+          />
           Your Apps Name
         </Text>
       </Box>

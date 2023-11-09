@@ -5,15 +5,21 @@ import { FiActivity, FiHome, FiInstagram, FiUser } from "react-icons/fi";
 import ButtonBottomNavigation from "../button/button-bottom-navigation";
 import { useLocation } from "react-router-dom";
 
-export default function BottomNavigation() {
+interface IProps {
+  simpleMode?: boolean
+}
+
+export default function BottomNavigation(props: IProps) {
   const location = useLocation()
   const path = location.pathname
+  const { simpleMode } = props
 
   return (
     <Stack
       bg={'white'}
       width={'100%'}
       height={'7vh'}
+      hidden={simpleMode}
     >
       <Stack height={'100%'} direction={'row'} spacing={0}>
         <ButtonBottomNavigation
