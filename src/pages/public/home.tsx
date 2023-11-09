@@ -13,11 +13,11 @@ const SampleBox = (props: SampleBoxProps) => {
   const { title, link, desc } = props
   return (
     <Box boxShadow={'xl'} display={'flex'}>
-      <Container px={'20px'} w={'300px'} py={'50px'} h={'250px'}>
+      <Container px={'20px'} w={'300px'} py={'50px'} h={'300px'}>
         <Heading fontSize={'2xl'} mb={2}>
           {title}
         </Heading>
-        <Text mb={3} height={'86px'}>
+        <Text height={'100px'}>
           {desc}
         </Text>
         <Link to={link}>
@@ -42,6 +42,11 @@ export default function Home() {
       title: 'Not Found',
       desc: 'The following is an example of a page not found with an eye-catching image illustration',
       link: '/sample/not-found'
+    },
+    {
+      title: 'Auth using OTP',
+      desc: 'The following is an example of a page not found with an eye-catching image illustration',
+      link: '/sample/auth/otp'
     },
   ]
 

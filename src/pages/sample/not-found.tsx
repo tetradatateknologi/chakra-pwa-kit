@@ -10,10 +10,13 @@ export default function NotFound() {
         textAlign={'center'}
       >
         <Container>
-          <Image
-            src={'https://lelogama.go-jek.com/prime/upload/web/image/link-sheet-spot-illustration-74.svg'}
-            mb={5}
-          />
+          <Flex justifyContent={'center'}>
+            <Image
+              height={'300px'}
+              src={'https://lelogama.go-jek.com/prime/upload/web/image/link-sheet-spot-illustration-74.svg'}
+              mb={5}
+            />
+          </Flex>
           <Heading mb={3}>
             Data Not Found
           </Heading>

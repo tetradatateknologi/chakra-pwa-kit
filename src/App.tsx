@@ -16,6 +16,7 @@ import Activity from './pages/public/activity.tsx';
 import Profile from './pages/public/profile.tsx';
 import Blank from './pages/sample/blank.tsx';
 import NotFound from './pages/sample/not-found.tsx';
+import AuthOtp from './pages/sample/auth-otp.tsx';
 
 export const Context = React.createContext([])
 
@@ -36,6 +37,7 @@ function App() {
           {/* Sample Pages */}
           <Route path='/sample/blank' element={<Blank />} />
           <Route path='/sample/not-found' element={<NotFound />} />
+          <Route path='/sample/auth/otp' element={<AuthOtp />} />
 
           {/* Error Pages */}
           <Route path='*' element={<NotFoundPage />} />
