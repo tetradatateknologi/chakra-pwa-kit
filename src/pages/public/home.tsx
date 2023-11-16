@@ -67,7 +67,7 @@ export default function Home() {
       >
         Mobile First Web App
       </Text>
-      <Text>
+      <Text textAlign={'justify'}>
         A Mobile First Web App is a web design approach that <b>prioritizes the user experience of mobile devices.</b> This approach focuses on developing the appearance and functionality of a website for mobile devices first before creating the desktop version.
       </Text>
 
@@ -80,7 +80,7 @@ export default function Home() {
       >
         Sample Pages
       </Text>
-      <Text>
+      <Text textAlign={'justify'}>
         Below are <b>several examples</b> of page designs and frontend components that can be used and are ready for you to use 🚀
       </Text>
       <HStack

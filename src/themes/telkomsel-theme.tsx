@@ -12,6 +12,7 @@ const TelkomselTheme = extendTheme({
   },
   colors: {
     primary: {
+      50: '#F2F2F2',
       300: 'red',
       400: '#ed1846',
       500: '#b21234'
