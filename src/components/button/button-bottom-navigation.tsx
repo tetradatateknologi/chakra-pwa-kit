@@ -14,8 +14,8 @@ export default function ButtonBottomNavigation(props: IProps) {
   const { icon, text, href, isActive } = props
   return (
     <Box
-      bg={(isActive) ? 'blue.500' : 'white'}
-      color={(isActive) ? 'white' : 'blue.500'}
+      bg={(isActive) ? 'primary.400' : 'white'}
+      color={(isActive) ? 'white' : 'primary.400'}
       py={'5px'}
       px={'5%'}
       width={'25%'}

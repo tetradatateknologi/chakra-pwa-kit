@@ -17,6 +17,7 @@ import Profile from './pages/public/profile.tsx';
 import Blank from './pages/sample/blank.tsx';
 import NotFound from './pages/sample/not-found.tsx';
 import AuthOtp from './pages/sample/auth-otp.tsx';
+import CustomTheme from './pages/sample/custom-theme.tsx';
 
 export const Context = React.createContext([])
 
@@ -38,6 +39,7 @@ function App() {
           <Route path='/sample/blank' element={<Blank />} />
           <Route path='/sample/not-found' element={<NotFound />} />
           <Route path='/sample/auth/otp' element={<AuthOtp />} />
+          <Route path='/sample/custom-theme' element={<CustomTheme />} />
 
           {/* Error Pages */}
           <Route path='*' element={<NotFoundPage />} />

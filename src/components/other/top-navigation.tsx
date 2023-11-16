@@ -14,7 +14,7 @@ export default function TopNavigation(props: IProps) {
   const { simpleMode } = props
   return (
     <Stack
-      bgGradient='linear(to-l, blue.500, blue.400)'
+      bgGradient='linear(to-l, primary.300, primary.400)'
       width={'100%'}
       height={'5vh'}
       color={'white'}

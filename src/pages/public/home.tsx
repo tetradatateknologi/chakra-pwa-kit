@@ -21,7 +21,7 @@ const SampleBox = (props: SampleBoxProps) => {
           {desc}
         </Text>
         <Link to={link}>
-          <Button variant={'outline'} colorScheme={'blue'}>
+          <Button variant={'outline'}>
             <Icon as={FiEdit} me={2} />
             View Detail
           </Button>
@@ -45,15 +45,20 @@ export default function Home() {
     },
     {
       title: 'Auth using OTP',
-      desc: 'The following is an example of a page not found with an eye-catching image illustration',
+      desc: 'The following is an example of a otp auth page',
       link: '/sample/auth/otp'
+    },
+    {
+      title: 'Custom Theme 🚀',
+      desc: 'The following is an example of a chakra ui custom theme',
+      link: '/sample/custom-theme'
     },
   ]
 
   return (
     <MobileLayout>
       <Text
-        bgGradient='linear(to-l, blue.500, blue.400)'
+        bgGradient='linear(to-l, primary.300, primary.400)'
         bgClip='text'
         fontSize='4xl'
         lineHeight={1}
@@ -68,7 +73,7 @@ export default function Home() {
 
       <Text
         mt={'20px'}
-        bgGradient='linear(to-l, blue.500, blue.400)'
+        bgGradient='linear(to-l, primary.300, primary.400)'
         bgClip='text'
         fontSize='4xl'
         fontWeight='extrabold'

@@ -17,7 +17,7 @@ export default function Profile() {
         <HStack mb={5}>
           <Avatar
             name={'Hanif Radityo'}
-            bg={'blue.500'}
+            bg={'primary.400'}
             color={'white'}
             size={'lg'}
             mr={2}
@@ -29,7 +29,7 @@ export default function Profile() {
             >
               Hanif Radityo
             </Text>
-            <Button size={'sm'} variant={'outline'} colorScheme={'blue'} onClick={() => {
+            <Button size={'sm'} variant={'outline'} onClick={() => {
               useAlert.setErrorMessage("fitur ini masih dalam tahap pengembangan")
             }}>
               Edit Profile
