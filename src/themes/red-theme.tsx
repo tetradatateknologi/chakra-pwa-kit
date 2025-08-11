@@ -6,7 +6,7 @@ import "@fontsource/poppins/500.css";
 import "@fontsource/poppins/600.css";
 import "@fontsource/poppins/700.css";
 
-const TelkomselTheme = extendTheme({
+const RedTheme = extendTheme({
   fonts: {
     body: `'Poppins', sans-serif`,
   },
@@ -40,4 +40,4 @@ const TelkomselTheme = extendTheme({
   },
 });
 
-export default TelkomselTheme;
+export default RedTheme;
