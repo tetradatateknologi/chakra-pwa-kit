@@ -16,17 +16,6 @@ export interface MobileLayoutProps {
 
 export default function MobileLayout(props: MobileLayoutProps) {
   const { children, simpleMode, pageTitle, hiddenScroll, center, button } = props;
-
-  useEffect(() => {
-    console.log({
-      simpleMode,
-      pageTitle,
-      hiddenScroll,
-      center,
-      button,
-    });
-  }, []);
-
   return (
     <Box>
       <Container maxW={"container.sm"} px={{ sm: "0px" }}>
@@ -43,7 +32,9 @@ export default function MobileLayout(props: MobileLayoutProps) {
             overflowY={hiddenScroll ? "hidden" : "scroll"}
             p={{ base: "15px", md: "30px" }}
           >
-            {children}
+            <Stack paddingTop={pageTitle == "" ? 0 : 20} paddingBottom={simpleMode ? 0 : 20}>
+              {children}
+            </Stack>
           </Stack>
           <BottomNavigation simpleMode={simpleMode} />
         </VStack>

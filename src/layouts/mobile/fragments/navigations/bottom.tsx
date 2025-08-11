@@ -23,12 +23,16 @@ export default function BottomNavigation(props: Props) {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    console.log({ navigation });
-  }, [navigation]);
-
   return (
-    <Stack bg={"white"} width={"100%"} height={"7dvh"} hidden={simpleMode}>
+    <Stack
+      bg={"whiteAlpha.500"}
+      bottom={0}
+      backdropFilter={"blur(10px)"}
+      position={"fixed"}
+      width={"100%"}
+      height={"7dvh"}
+      hidden={simpleMode}
+    >
       <Stack height={"100%"} justify={"center"} direction={"row"} spacing={0}>
         {navigation.map((one: any) => {
           return (
