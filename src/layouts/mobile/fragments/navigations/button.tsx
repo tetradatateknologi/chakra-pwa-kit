@@ -30,7 +30,7 @@ export default function ButtonBottomNavigation(props: IProps) {
             display={{ base: "hidden", md: "flex" }}
             fontSize={{ base: "x-small", md: "small" }}
             color={isActive ? "primary.400" : "inherit"}
-            fontWeight={"normal"}
+            fontWeight={"light"}
           >
             {text}
           </Text>

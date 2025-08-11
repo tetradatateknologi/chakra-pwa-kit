@@ -28,7 +28,7 @@ export function TopNavigation(props: TopNavigationProps) {
         alignItems={"center"}
         position={"relative"}
       >
-        <Text fontSize={{ base: "xl", md: "2xl" }} fontWeight={"semibold"}>
+        <Text fontSize={"xl"} fontWeight={"normal"}>
           <Icon
             cursor={"pointer"}
             as={FiArrowLeft}

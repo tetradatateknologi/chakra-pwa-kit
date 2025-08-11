@@ -1,33 +1,30 @@
-import { BarGraph } from "@/assets/icons/bar-graph";
-import { Settings } from "@/assets/icons/settings";
-import { Tracking } from "@/assets/icons/tracking";
-import { Users } from "@/assets/icons/users";
+import { FiBook, FiHome, FiRadio, FiUser } from "react-icons/fi";
 
 const defaultMenu = () => {
   return [
     {
-      name: "Dasbor",
-      icon: BarGraph,
+      name: "Home",
+      icon: FiHome,
       link: "/",
       activeAt: ["/"],
     },
     {
-      name: "Pengguna",
-      icon: Users,
-      link: "/admin/student/class-list",
-      activeAt: ["/admin/student/class-list"],
+      name: "Content",
+      icon: FiBook,
+      link: "/content",
+      activeAt: ["/content"],
     },
     {
-      name: "Lacak",
-      icon: Tracking,
-      link: "/admin/tracking",
-      activeAt: ["/admin/tracking"],
+      name: "Membership",
+      icon: FiRadio,
+      link: "/membership",
+      activeAt: ["/membership"],
     },
     {
-      name: "Pengaturan",
-      icon: Settings,
-      link: "/admin/setting",
-      activeAt: ["/admin/setting"],
+      name: "Profile",
+      icon: FiUser,
+      link: "/profile",
+      activeAt: ["/profile"],
     },
   ];
 };
