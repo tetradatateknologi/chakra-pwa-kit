@@ -30,11 +30,11 @@ export default function MobileLayout(props: MobileLayoutProps) {
             width={"100%"}
             height={"100dvh"}
             overflowY={hiddenScroll ? "hidden" : "scroll"}
-            p={{ base: "15px", md: "30px" }}
+            paddingX={{ base: "15px", md: "30px" }}
+            paddingTop={pageTitle == "" ? 10 : 20}
+            paddingBottom={simpleMode ? 0 : 20}
           >
-            <Stack paddingTop={pageTitle == "" ? 0 : 20} paddingBottom={simpleMode ? 0 : 20}>
-              {children}
-            </Stack>
+            {children}
           </Stack>
           <BottomNavigation simpleMode={simpleMode} />
         </VStack>
