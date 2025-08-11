@@ -1,6 +1,13 @@
+import { useApp } from "@/layouts/app/context";
 import { Text } from "@chakra-ui/react";
+import { useEffect } from "react";
 
 export default function Home() {
+  const { setTitle, setSimpleMode } = useApp();
+  useEffect(() => {
+    setTitle("Home Page Title");
+    setSimpleMode(false);
+  }, []);
   return (
     <>
       <Text

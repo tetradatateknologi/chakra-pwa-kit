@@ -19,6 +19,11 @@ const RedTheme = extendTheme({
     },
   },
   components: {
+    Heading: {
+      defaultProps: {
+        size: "lg",
+      },
+    },
     Button: {
       variants: {
         solid: {

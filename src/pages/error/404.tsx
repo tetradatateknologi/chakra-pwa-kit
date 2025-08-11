@@ -1,6 +1,13 @@
+import { useApp } from "@/layouts/app/context";
 import { Button, Container, Flex, Heading, Image, Stack, Text } from "@chakra-ui/react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 export default function NotFoundPage() {
+  const { setSimpleMode, setTitle } = useApp();
+  useEffect(() => {
+    setTitle("");
+    setSimpleMode(true);
+  }, []);
   return (
     <Flex height={"100%"} alignItems={"center"} textAlign={"center"}>
       <Container>
