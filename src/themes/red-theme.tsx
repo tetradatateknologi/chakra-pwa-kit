@@ -33,7 +33,7 @@ const RedTheme = extendTheme({
         },
       },
       defaultProps: {
-        size: "lg",
+        size: "md",
         variant: "solid",
       },
     },
