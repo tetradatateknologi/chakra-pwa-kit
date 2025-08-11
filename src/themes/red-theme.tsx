@@ -30,8 +30,7 @@ const RedTheme = extendTheme({
           bg: "primary.400",
           color: "white",
           fontSize: "md",
-          fontWeight: "bold",
-          borderRadius: "60px",
+          borderRadius: "10px",
           _hover: {
             bg: "primary.500",
           },

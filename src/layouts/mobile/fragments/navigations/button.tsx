@@ -33,7 +33,7 @@ export default function ButtonBottomNavigation(props: Props) {
         <Link to={href}>
           <MotionIcon
             as={icon}
-            fontSize={{ base: "2xl", md: "3xl" }}
+            fontSize={{ base: "xl", md: "3xl" }}
             animate={{
               scale: isActive ? 1.2 : 1,
               color: isActive ? primaryColor : "#6B7280",
@@ -42,7 +42,6 @@ export default function ButtonBottomNavigation(props: Props) {
           />
           <Text
             justifyContent={"center"}
-            display={{ base: "hidden", md: "flex" }}
             fontSize={{ base: "x-small", md: "small" }}
             color={isActive ? "primary.400" : "inherit"}
             fontWeight={"light"}

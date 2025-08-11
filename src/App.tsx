@@ -4,6 +4,7 @@ import AppLayout from "./layouts/app";
 import NotFoundPage from "./pages/error/404";
 import HomePages from "./pages/public/home";
 import ContentPages from "./pages/public/content";
+import LoginPages from "./pages/public/login";
 
 export const Context = React.createContext([]);
 
@@ -13,7 +14,8 @@ function App() {
       <Router>
         <Routes>
           <Route element={<AppLayout />}>
-            <Route index element={<HomePages />} />
+            <Route index element={<LoginPages />} />
+            <Route path="home" element={<HomePages />} />
             <Route path="content" element={<ContentPages />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>

@@ -5,8 +5,8 @@ const defaultMenu = () => {
     {
       name: "Home",
       icon: FiHome,
-      link: "/",
-      activeAt: ["/"],
+      link: "/home",
+      activeAt: ["/home"],
     },
     {
       name: "Content",
